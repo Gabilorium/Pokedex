@@ -15,16 +15,31 @@
 //A partir de octava (offset=890)
 //Forma hisui ()
 //Novena NO SE SABE CUANTOS HAY
-fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
+
+
+//Cargar todos los pokemon
+fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
     .then(response => response.json())
     .then(json => {
-        Pokemon(json.results);
+        Pokemon(json.results);  
     });
+
+//Conceguir la datta de 1 solo pokemon
+const fetchData = async (id) => {
+  try{
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    const data = await res.json()
+    console.log(data)
+  }catch(error){
+    console.log(error)
+  }
+}
 
 // Pone los pokemos que agarra del json en el container
 function Pokemon(pokemon) {
   const container = document.getElementById('container')
   pokemon.forEach(pokemon => {
+    fetchData(IdPokemon(pokemon.url))
     container.innerHTML = `
     ${container.innerHTML}
     <div class="card">
