@@ -18,7 +18,7 @@
 
 
 //Cargar todos los pokemon
-fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
+fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
     .then(response => response.json())
     .then(json => {
         Pokemon(json.results);  
@@ -57,3 +57,25 @@ function Pokemon(pokemon) {
 function IdPokemon(url) {
   return url.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/','')
 }
+
+const left = document.querySelector(".left");
+
+const right = document.querySelector(".right"); 
+
+const container = document.querySelector(".container");
+
+left.addEventListener("mouseenter", () =>
+  container.classList.add("hover-left")
+);
+
+left.addEventListener("mouse leave", () =>
+  container.classList.remove("hover-left")
+);
+
+right.addEventListener("mouseenter", () =>
+  container.classList.add("hover-right")
+);
+
+right.addEventListener("mouseleave", () =>
+  container.classList.remove("hover-right")
+);
