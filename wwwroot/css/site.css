@@ -30,9 +30,13 @@ html {
 
 body {
   font-family: 'Ubuntu', sans-serif;
-  height: 100vh;
-	overflow: hidden;
 	margin: 0;
+  margin-bottom: 60px;
+}
+.princ {
+  height: 100vh;
+	/*overflow: hidden;*/
+  margin: 0;
   margin-bottom: 60px;
 }
 
@@ -43,7 +47,7 @@ body {
 	left: 50%; 
 	top: 20%; 
 	transform: translateX(-50%); 
-	white-space: nowrap; 
+	white-space: nowrap;
 }
 
 .bttn {
@@ -118,23 +122,13 @@ body {
 	width: var(--minimize-width); 
 }
 /* =================================================================================================*/
-/*{
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
-.head{
-  background-color: rgb(187, 70, 49);
-  padding: 20px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  color: white;
-}
-
-#container{
+#containerr{
   width: min(100%, 1000px);
   margin: 100px auto;
   display: flex;
@@ -157,4 +151,4 @@ body {
 .card span{
   color: #6e6e6e;
   font-weight: 500;
-}*/ 
+}

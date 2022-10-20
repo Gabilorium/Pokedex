@@ -21,7 +21,7 @@
 fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
     .then(response => response.json())
     .then(json => {
-        Pokemon(json.results);  
+        Pokemones(json.results);  
     });
 
 //Conceguir la datta de 1 solo pokemon
@@ -36,13 +36,22 @@ const fetchData = async (id) => {
 }
 
 // Pone los pokemos que agarra del json en el container
-function Pokemon(pokemon) {
+function Pokemones(pokemon) {
   const container = document.getElementById('containerr')
   pokemon.forEach(pokemon => {
     fetchData(IdPokemon(pokemon.url))
+    $.ajax({
+      url: '/Home/CargarPokemon',
+      data:{IdPokemon: IdPokemon(pokemon.url)},
+      data:{Nombre: pokemon.name.charAt(0).toLowerCase() + pokemon.name.slice(1)},
+      type: 'post',
+      datatype:"json",
+  
+      
+    })
     container.innerHTML = `
     ${container.innerHTML}
-    <div class="card">
+    <div class="card" type="button" data-toggle="modal" data-targuet="#ModalPokemon" onclick="MostrarPokemon(${IdPokemon(pokemon.url)})">
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${IdPokemon(pokemon.url)}.png"/>
     <span>Nº.${IdPokemon(pokemon.url)}</span>
     <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
@@ -58,6 +67,8 @@ function IdPokemon(url) {
   return url.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/','')
 }
 
+
+//Cambiar Clases del div
 const left = document.querySelector(".left"); 
 const right = document.querySelector(".right"); 
 const container = document.querySelector(".container");
@@ -76,3 +87,13 @@ container.classList.add("hover-right")
 right.addEventListener("mouseleave", () =>
 container.classList.remove("hover-right")
 );
+
+//Crear Ajax
+function MostrarPokemon(id)
+{
+  $.ajax({
+    url:"https://pokeapi.co/api/v2/pokemon/"+ id,
+
+
+  });
+}

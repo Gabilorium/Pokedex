@@ -17,10 +17,21 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult Pokedex()
+    {
+        return View();
+    }
 
     public IActionResult Privacy()
     {
         return View();
+    }
+
+    public IActionResult CargarPokemon(int IdPokemon, string Nombre)
+    {
+        Pokemon Poke = new Pokemon(IdPokemon,Nombre);
+        BD.CargarPokemon(Poke);
+        return View("Pokedex");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
