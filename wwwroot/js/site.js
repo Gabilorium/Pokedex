@@ -18,7 +18,7 @@
 
 
 //Cargar todos los pokemon
-fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
+fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
     .then(response => response.json())
     .then(json => {
         Pokemon(json.results);  
@@ -37,7 +37,7 @@ const fetchData = async (id) => {
 
 // Pone los pokemos que agarra del json en el container
 function Pokemon(pokemon) {
-  const container = document.getElementById('container')
+  const container = document.getElementById('containerr')
   pokemon.forEach(pokemon => {
     fetchData(IdPokemon(pokemon.url))
     container.innerHTML = `
@@ -57,3 +57,22 @@ function Pokemon(pokemon) {
 function IdPokemon(url) {
   return url.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/','')
 }
+
+const left = document.querySelector(".left"); 
+const right = document.querySelector(".right"); 
+const container = document.querySelector(".container");
+
+left.addEventListener("mouseenter", () => 
+container.classList.add("hover-left")
+); 
+left.addEventListener("mouseleave", () => 
+container.classList.remove("hover-left")
+); 
+
+right.addEventListener("mouseenter", () =>
+container.classList.add("hover-right") 
+);
+
+right.addEventListener("mouseleave", () =>
+container.classList.remove("hover-right")
+);
