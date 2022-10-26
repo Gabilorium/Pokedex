@@ -1,4 +1,31 @@
 @{
     ViewData["Title"] = "Equipos";
 }
+<div class="text-center">
+    <h1>Equipos Pokemon</h1>
+ 
+    <table class="table">
 
+        <thead>
+
+            <tr>
+            <th>Id</th>
+            <th>Nombre del equipo</th>
+            <th>Fecha de creación</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+            @foreach(Equipo item in ViewBag.ListaEquipos)
+            {
+                <tr>
+                    <td>@item.IdEquipo</td>
+                    <td>@item.NombreEquipo</td>
+                    <td>@item.FechaCreacion</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

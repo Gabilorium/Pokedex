@@ -20,7 +20,7 @@ namespace Pokedex.Models{
         private int _spD;
         private int _speed;
 
-        public MiPokemon(int idPokemon, string nombre, string imagen, string tipo1, string tipo2, int hp, int attack, int defence, int spA, int spD, int speed)
+        public MiPokemon(string nombre, string imagen, string tipo1, string tipo2, int hp, int attack, int defence, int spA, int spD, int speed)
         {
             _nombre = nombre;
             _imagen = imagen;

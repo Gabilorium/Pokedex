@@ -17,7 +17,7 @@ namespace Pokedex.Models{
             _idEquipo = idEquipo;
             _idPokemon = idPokemon;
         }
-        /*public Pokemon()
+        /*public PokemonxEquipo()
         {
             _idEquipo = 0;
             _idPokemon = 0;
