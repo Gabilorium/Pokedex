@@ -31,7 +31,7 @@ public class HomeController : Controller
 
     public IActionResult CargarPokemon(int IdPokemon, string Nombre)
     {
-        Pokemon Poke = new Pokemon(IdPokemon,Nombre);
+        //MiPokemon Poke = new MiPokemon(IdPokemon,Nombre);
         BD.CargarPokemon(Poke);
         return View("Pokedex");
     }
