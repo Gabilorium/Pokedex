@@ -35,24 +35,6 @@ const fetchData = async (id) => {
   }
 }
 
-function MostrarPokemon(Id)
-{
-  $.ajax(
-    {
-      type:'POST',
-      dataType:'JSON',
-      Url: 'https://pokeapi.co/api/v2/pokemon/'+Id,
-      Data: { IdPokemon: Id},
-      success:
-        function (response)
-        {
-          
-          console.log(response);
-
-          //$("#NombrePokemon").attr("src", 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + Id + '.png');
-        }
-    });  
-}
 
 // Pone los pokemos que agarra del json en el container
 function Pokemones(pokemon) {
