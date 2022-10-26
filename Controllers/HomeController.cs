@@ -27,6 +27,8 @@ public class HomeController : Controller
         return View();
     }
 
+
+
     public IActionResult CargarPokemon(int IdPokemon, string Nombre)
     {
         Pokemon Poke = new Pokemon(IdPokemon,Nombre);
