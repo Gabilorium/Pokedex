@@ -42,14 +42,18 @@ function MostrarPokemon(Id)
       type:'POST',
       dataType:'JSON',
       Url: 'https://pokeapi.co/api/v2/pokemon/'+Id,
-      //Data: { IdPokemon: Id},
-      success: DatosPokemon
+      Data: { IdPokemon: Id},
+      success:
+        function (response)
+        {
+          
+          console.log(response);
+
+          //$("#NombrePokemon").attr("src", 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + Id + '.png');
+        }
     });  
 }
-function DatosPokemon(response)
-{
-  $("#FotoPokemon").html("src = https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + response.Id + ".png");
-}
+
 // Pone los pokemos que agarra del json en el container
 function Pokemones(pokemon) {
   const container = document.getElementById('containerr')
