@@ -45,9 +45,10 @@ body {
 	color: #fff;
 	position: absolute; 
 	left: 50%; 
-	top: 20%; 
+	top: 32%; 
 	transform: translateX(-50%); 
 	white-space: nowrap;
+  -webkit-text-stroke: black 2px
 }
 
 .bttn {
@@ -78,7 +79,7 @@ body {
 
 .split.left {
   left: 0;
-	background: url("/Imagenes/equipo0.png")
+	background: url("/Imagenes/equipo.jpg")
 	no-repeat center / cover;
 }
 .split-left::before {
