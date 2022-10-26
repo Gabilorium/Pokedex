@@ -11,11 +11,11 @@ namespace Pokedex.Models{
     {
         private static string _conectionString = 
         @"Server=A-PHZ2-CIDI-026; DataBase=Pokemon;Trusted_Connection=True;";
-        private static List<Pokemon> _ListaPokemones = new List<Pokemon>();
+        private static List<MiPokemon> _ListaPokemones = new List<MiPokemon>();
 
-        public static void CargarPokemon(Pokemon Poke)
+        public static void CargarPokemon(MiPokemon Poke)
         {
-            string SQL = "INSERT INTO Pokemon(IdPOkemon,Nombre) VALUES (@pIdPokemon, @pNombre)";
+            string SQL = "INSERT INTO MiPokemon(IdPOkemon,Nombre) VALUES (@pIdPokemon, @pNombre)";
             using(SqlConnection db = new SqlConnection(_conectionString))
             {
                 db.Execute(SQL, new{pIdPokemon = Poke.IdPokemon, pNombre = Poke.Nombre});
