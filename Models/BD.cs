@@ -10,7 +10,7 @@ namespace Pokedex.Models{
     public class BD
     {
         private static string _conectionString = 
-        @"Server=A-PHZ2-AMI-013; DataBase=Pokemon;Trusted_Connection=True;";
+        @"Server=A-PHZ2-CIDI-026; DataBase=Pokemon;Trusted_Connection=True;";
         private static List<Pokemon> _ListaPokemones = new List<Pokemon>();
 
         public static void CargarPokemon(Pokemon Poke)
