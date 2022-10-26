@@ -12,12 +12,12 @@ namespace Pokedex.Models{
         private int _idEquipo;
         private int _idPokemon;
 
-        public Pokemon(int _idEquipo, int _idPokemon)
+        public PokemonxEquipo(int idEquipo, int idPokemon)
         {
             _idEquipo = idEquipo;
             _idPokemon = idPokemon;
         }
-        /*public Pokemon()
+        /*public PokemonxEquipo()
         {
             _idEquipo = 0;
             _idPokemon = 0;

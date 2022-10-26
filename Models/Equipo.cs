@@ -12,12 +12,12 @@ namespace Pokedex.Models{
         private string _nombreEquipo;
         private DateTime _fechaCreacion;
 
-        public Pokemon(string nombreEquipo, DateTime fechaCreacion)
+        public Equipo(string nombreEquipo, DateTime fechaCreacion)
         {
             _nombreEquipo = nombreEquipo;
             _fechaCreacion = fechaCreacion;
         }
-        public Pokemon()
+        public Equipo()
         {
             _nombreEquipo = "";
             _fechaCreacion = new DateTime();  

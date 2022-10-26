@@ -21,15 +21,19 @@ public class HomeController : Controller
     {
         return View();
     }
-
+    public IActionResult Equipo()
+    {
+        ViewBag.ListaEquipos = BD.ObtenerEquipo();
+        return View();
+    }
     public IActionResult Privacy()
     {
         return View();
     }
 
-    public IActionResult CargarPokemon(int IdPokemon, string Nombre)
+    public IActionResult CargarPokemon(string nombre, string imagen, string tipo1, string tipo2, int hp, int attack, int defence, int spA, int spD, int speed)
     {
-        Pokemon Poke = new Pokemon(IdPokemon,Nombre);
+        MiPokemon Poke = new MiPokemon(nombre, imagen, tipo1, tipo2, hp, attack, defence, spA, spD, speed);
         BD.CargarPokemon(Poke);
         return View("Pokedex");
     }
