@@ -18,8 +18,17 @@
   src: url('/Pokemon Solid.ttf') format('truetype');
 }
 
+@font-face{
+  font-family:fuente2;
+  src: url('/Gotham-Black.otf') format('truetype');
+}
+
 .fuente{
   font-family: fuente;
+}
+
+.fuente2{
+  font-family: fuente2;
 }
 
 @media (max-width: 800px) { 
@@ -165,8 +174,14 @@ body {
   color:black;
 }
 .titulo{
-  margin-bottom: 10%;
+  margin-bottom: 8%;
   font-size: 5rem;
 	color:rgb(255,205,0) ;
   -webkit-text-stroke: rgb(53,106,188) 7.8px;
+}
+.fondoAzul{
+  background-color:rgb(53,106,188);
+}
+.chiquito{
+  width: 5%;
 }

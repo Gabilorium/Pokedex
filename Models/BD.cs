@@ -33,6 +33,24 @@ namespace Pokedex.Models{
             }
             return _ListaEquipos;
         }
+
+        public static void EliminarEquipo(int IdEquipo)
+        {
+            string sql = "DELETE FROM Equipo WHERE IdEquipo = @pIdEquipo";
+            using(SqlConnection db = new SqlConnection(_conectionString))
+            {
+                db.Execute(sql, new { pIdEquipo = IdEquipo});
+            }
+        }
+
+        public static void ModificarEquipo(string Nombre, int IdEquipo)
+        {
+            string sql = "UPDATE Equipo Set Nombre = @pNombre WHERE IdEquipo = @pIdEquipo";
+            using(SqlConnection db = new SqlConnection(_conectionString))
+            {
+                db.Execute(sql, new { pNombre = Nombre, pIdEquipo = IdEquipo});
+            }
+        }
     }
 }
 

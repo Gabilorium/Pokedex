@@ -5,7 +5,7 @@
     <div class="row mb-4">
         <p class="fuente titulo">Equipos y Pokemon</p>
     </div>
-    <div class="row mb-4">
+    <div class="row mb-5">
         <div class="col-6">
             <div class="text-center">
                 <button class="fuente btn btn-warning btn-lg">Agregar un Equipo</button>
@@ -20,13 +20,13 @@
 
     <div class="row">
 
-        <div class="col-12">
+        <div class="col-12 fondoAzul">
             <table class="table">
                 <thead>
                     <tr>
-                    <th>Id</th>
-                    <th>Nombre del equipo</th>
-                    <th>Fecha de creación</th>
+                    <th class="fuente2">Id</th>
+                    <th class="fuente2">Nombre del equipo</th>
+                    <th class="fuente2">Fecha de creación</th>
                     </tr>
                 </thead>
 
@@ -34,9 +34,11 @@
                     @foreach(Equipo item in ViewBag.ListaEquipos)
                     {
                         <tr>
-                            <td>@item.IdEquipo</td>
-                            <td>@item.NombreEquipo</td>
-                            <td>@item.FechaCreacion</td>
+                            <td class="fuente2">@item.IdEquipo</td>
+                            <td class="fuente2">@item.NombreEquipo</td>
+                            <td class="fuente2">@item.FechaCreacion</td>
+                            <td><a href='@Url.Action("EliminarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Modificar nombre</a></td>
+                            <td><a href='@Url.Action("EliminarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-danger fuente2">Eliminar</a></td>
                         </tr>
                     }
                 </tbody>

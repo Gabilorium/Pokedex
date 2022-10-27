@@ -95,6 +95,18 @@ public class HomeController : Controller
         return RedirectToAction("VerDetalleEquipo","Home", new{IdEquipo=IdEquipo});
     }*/
 
+    public IActionResult EliminarEquipo(int idEquipo)
+    {   
+        BD.EliminarEquipo(idEquipo);
+        return View("Equipo");
+    }
+
+        public IActionResult ModificarEquipo(string Nombre, int idEquipo)
+    {   
+        BD.ModificarEquipo(Nombre, idEquipo);
+        return View("Equipo");
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
