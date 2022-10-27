@@ -45,7 +45,7 @@ namespace Pokedex.Models{
 
         public static void ModificarEquipo(string Nombre, int IdEquipo)
         {
-            string sql = "UPDATE Equipo Set Nombre = @pNombre WHERE IdEquipo = @pIdEquipo";
+            string sql = "UPDATE Equipo Set NombreEquipo = @pNombre WHERE IdEquipo = @pIdEquipo";
             using(SqlConnection db = new SqlConnection(_conectionString))
             {
                 db.Execute(sql, new { pNombre = Nombre, pIdEquipo = IdEquipo});

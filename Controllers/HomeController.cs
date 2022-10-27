@@ -101,10 +101,10 @@ public class HomeController : Controller
         return View("Equipo");
     }
 
-        public IActionResult ModificarEquipo(string Nombre, int idEquipo)
+    public IActionResult ModificarEquipo(string Nombre, int idEquipo)
     {   
         BD.ModificarEquipo(Nombre, idEquipo);
-        return View("Equipo");
+        return View("ModificarEquipo");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

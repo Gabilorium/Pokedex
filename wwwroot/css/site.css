@@ -52,7 +52,7 @@ body {
 }
 .princ {
   height: 100vh;
-	/*overflow: hidden;*/
+	overflow: hidden;
   margin: 0;
   margin-bottom: 60px;
 }
@@ -73,9 +73,7 @@ body {
   align-items: center; 
   Justify-content: center; 
   top: 40%;
-  transform: translateX(-50%); /*
-  border: #FFF solid 0.2rem; 
-  background-color: black;*/
+  transform: translateX(-50%);
   opacity: .9;
   font-size: 1rem; 
   font-weight: bold; 
