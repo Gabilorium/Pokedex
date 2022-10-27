@@ -2,30 +2,47 @@
     ViewData["Title"] = "Equipos";
 }
 <div class="text-center">
-    <h1>Equipos Pokemon</h1>
+    <div class="row mb-4">
+        <p class="fuente titulo">Equipos y Pokemon</p>
+    </div>
+    <div class="row mb-4">
+        <div class="col-6">
+            <div class="text-center">
+                <button class="fuente btn btn-warning btn-lg">Agregar un Equipo</button>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="text-center">
+                <button class="negro fuente btn btn-warning btn-lg">Agregar un Pokemon</button>
+            </div>
+        </div>      
+    </div>
+
+    <div class="row">
+
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th>Id</th>
+                    <th>Nombre del equipo</th>
+                    <th>Fecha de creación</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach(Equipo item in ViewBag.ListaEquipos)
+                    {
+                        <tr>
+                            <td>@item.IdEquipo</td>
+                            <td>@item.NombreEquipo</td>
+                            <td>@item.FechaCreacion</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>                 
+        </div>
+    </div>
  
-    <table class="table">
 
-        <thead>
-
-            <tr>
-            <th>Id</th>
-            <th>Nombre del equipo</th>
-            <th>Fecha de creación</th>
-            </tr>
-
-        </thead>
-
-        <tbody>
-            @foreach(Equipo item in ViewBag.ListaEquipos)
-            {
-                <tr>
-                    <td>@item.IdEquipo</td>
-                    <td>@item.NombreEquipo</td>
-                    <td>@item.FechaCreacion</td>
-                </tr>
-            }
-        </tbody>
-
-    </table>
 </div>

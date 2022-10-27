@@ -48,8 +48,8 @@ body {
   margin-bottom: 60px;
 }
 .h1 {
-	font-size: 6rem;
-	color: rgb(255,205,0);
+	font-size: 5rem;
+	color:rgb(255,205,0) ;
 	position: absolute; 
 	left: 50%; 
 	top: 22%; 
@@ -64,10 +64,10 @@ body {
   align-items: center; 
   Justify-content: center; 
   top: 40%;
-  transform: translateX(-50%); 
+  transform: translateX(-50%); /*
   border: #FFF solid 0.2rem; 
-  background-color: black;
-  opacity: .6;
+  background-color: black;*/
+  opacity: .9;
   font-size: 1rem; 
   font-weight: bold; 
   text-transform: uppercase;
@@ -156,4 +156,17 @@ body {
 .card span{
   color: #6e6e6e;
   font-weight: 500;
+}
+.amarillo{
+  color:rgb(255,205,0);
+  font-size: 3.2rem;
+}
+.negro{
+  color:black;
+}
+.titulo{
+  margin-bottom: 10%;
+  font-size: 5rem;
+	color:rgb(255,205,0) ;
+  -webkit-text-stroke: rgb(53,106,188) 7.8px;
 }

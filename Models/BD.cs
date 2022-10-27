@@ -12,7 +12,7 @@ namespace Pokedex.Models{
         private static List<Equipo> _ListaEquipos = new List<Equipo>();
 
         private static string _conectionString = 
-        @"Server=A-PHZ2-CIDI-026; DataBase=Pokemon;Trusted_Connection=True;";
+        @"Server=127.0.0.1; DataBase=Pokemon;Trusted_Connection=True;";
         private static List<MiPokemon> _ListaPokemones = new List<MiPokemon>();
 
         public static void CargarPokemon(MiPokemon Poke)

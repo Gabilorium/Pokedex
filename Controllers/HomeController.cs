@@ -38,6 +38,63 @@ public class HomeController : Controller
         return View("Pokedex");
     }
 
+    public IActionResult AgregarEquipo(int IdEquipo)
+    {
+        ViewBag.IdEquipo = IdEquipo;
+        return View("AgregarEquipo");
+    }
+  
+    /*[HttpPost] public IActionResult GuardarEquipo(int IdEquipo, string Nombre, DateTime FechaNacimiento)
+    {   
+
+        List<Jugador> lista = new List<Jugador>();
+        lista = BD.ListarJugadores(IdEquipo);
+        foreach (Jugador jug in lista)
+        {
+            if(Camiseta == jug.Camiseta)
+            {
+                @ViewBag.Repe = true;
+                @ViewBag.IdEquipo = IdEquipo;
+                return View("AgregarJugador", new{IdEquipo=IdEquipo});
+            }
+        }
+
+        Equipo eq = new Equipo(IdEquipo, Nombre, FechaNacimiento);
+        //BD.AgregarEquipo(eq); FALTA HACER ESTO EN BD
+
+        return RedirectToAction("Equipo","Home");
+    }
+
+    [HttpPost] public IActionResult GuardarPokemon(int IdEquipo, string Nombre, DateTime FechaNacimiento)
+    {   
+
+        List<Jugador> lista = new List<Jugador>();
+        lista = BD.ListarJugadores(IdEquipo);
+        foreach (Jugador jug in lista)
+        {
+            if(Camiseta == jug.Camiseta)
+            {
+                @ViewBag.Repe = true;
+                @ViewBag.IdEquipo = IdEquipo;
+                return View("AgregarJugador", new{IdEquipo=IdEquipo});
+            }
+        }
+        
+        if(Foto.Length>0)
+        {
+            string wwwRootLocal = this.Environment.ContentRootPath + @"\wwwroot\Imagenes\FotosJug\" + Foto.FileName;
+            using (var stream = System.IO.File.Create(wwwRootLocal))
+            {
+                Foto.CopyToAsync(stream);
+            }
+        }        
+
+        Jugador nuevoJug = new Jugador(IdEquipo, Nombre, FechaNacimiento,("/" + Foto.FileName), EquipoActual, Camiseta);
+        BD.AgregarJugador(nuevoJug);
+
+        return RedirectToAction("VerDetalleEquipo","Home", new{IdEquipo=IdEquipo});
+    }*/
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
