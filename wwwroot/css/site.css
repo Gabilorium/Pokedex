@@ -9,9 +9,6 @@
 	--transition-speed: 1s;
 }
 
-*{
-	box-sizing: border-box;
-}
 
 @font-face{
   font-family:fuente;
@@ -144,11 +141,19 @@ body {
   color: white;
 }
 #containerr{
-  width: min(100%, 1000px);
-  margin: 100px auto;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+.noUnderLine{
+  text-decoration: none !important;
+  color: black;
+}
+.noUnderLine:hover {
+  color:black; 
+  text-decoration:none; 
+  cursor:pointer;  
 }
 .card{
   width: 230px;
@@ -183,3 +188,4 @@ body {
 .chiquito{
   width: 5%;
 }
+/*-----------------------------Filtrado-----------------------------------*/

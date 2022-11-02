@@ -19,39 +19,51 @@
 
 //Cargar todos los pokemon
 fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
-    .then(response => response.json())
-    .then(json => {
-        Pokemones(json.results);  
-    });
+  .then(response => response.json())
+  .then(json => {
+      Pokemones(json.results);  
+});
 
 //Conceguir la datta de 1 solo pokemon
 const fetchData = async (id) => {
   try{
+    console.log(id)
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await res.json()
-    //console.log(data)
+    console.log(data)
   }catch(error){
     console.log(error)
   }
 }
 
-
 // Pone los pokemos que agarra del json en el container
 function Pokemones(pokemon) {
   const container = document.getElementById('containerr')
   pokemon.forEach(pokemon => {
-    fetchData(IdPokemon(pokemon.url))
+    //fetchData(IdPokemon(pokemon.url))
     container.innerHTML = `
     ${container.innerHTML}
-    <div class="card" type="button" data-toggle="modal" data-target="#ModalPokemon" onclick="MostrarPokemon(${IdPokemon(pokemon.url)})">
+    <a href="DatosPokemon" class="noUnderLine">
+    <div class="card" type="button" onclick="MostrarPokemon(${IdPokemon(pokemon.url)})">
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${IdPokemon(pokemon.url)}.png"/>
+    <!--<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${IdPokemon(pokemon.url)}.svg"/>-->
     <span>Nº.${IdPokemon(pokemon.url)}</span>
     <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
     </card>
+    </a>
   `;
   });
 }
 
+
+function MostrarPokemon(IdPokemon) {
+  const container = document.getElementById('datos')
+    fetchData(IdPokemon);
+    container.innerHTML = `
+    ${container.innerHTML}
+    <img src="pokemon.imgJuego">
+  `;
+}
 
 // En esta ruta de la API no nos viene el id de cada pokemon, pero si que nos viene
 // una URL, para poder obtener todos los datos de ese pokemon, la cual contiene su ID
@@ -79,3 +91,4 @@ container.classList.add("hover-right")
 right.addEventListener("mouseleave", () =>
 container.classList.remove("hover-right")
 );
+

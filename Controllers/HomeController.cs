@@ -21,6 +21,10 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult DatosPokemon()
+    {
+        return View();
+    }
     public IActionResult Equipo()
     {
         ViewBag.ListaEquipos = BD.ObtenerEquipo();
