@@ -193,11 +193,11 @@ body {
   box-shadow: 20px 20px 60px #bebebe,
   -20px -20px 60px #ffffff;
 }
-.container
+/*.container
 {
   height: 100vh;
   display: flex;
-}
+}*/
 .form-container{
   margin: auto;
   padding: 1.3rem;
