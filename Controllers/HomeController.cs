@@ -111,6 +111,16 @@ public class HomeController : Controller
         return View("ModificarEquipo");
     }
 
+    public IActionResult CrearEquipo()
+    {   
+        return View();
+    }
+
+    public IActionResult CrearPokemon()
+    {   
+        return View();
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
