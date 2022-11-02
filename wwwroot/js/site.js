@@ -43,8 +43,8 @@ function Pokemones(pokemon) {
     //fetchData(IdPokemon(pokemon.url))
     container.innerHTML = `
     ${container.innerHTML}
-    <a href="DatosPokemon" class="noUnderLine">
-    <div class="card" type="button" onclick="MostrarPokemon(${IdPokemon(pokemon.url)})">
+    <a href="DatosPokemon?idpokemon=` + IdPokemon(pokemon.url) + `"  class="noUnderLine">
+    <div class="card" type="button">
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${IdPokemon(pokemon.url)}.png"/>
     <!--<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${IdPokemon(pokemon.url)}.svg"/>-->
     <span>Nº.${IdPokemon(pokemon.url)}</span>
@@ -57,8 +57,8 @@ function Pokemones(pokemon) {
 
 
 function MostrarPokemon(IdPokemon) {
+  fetchData(IdPokemon);
   const container = document.getElementById('datos')
-    fetchData(IdPokemon);
     container.innerHTML = `
     ${container.innerHTML}
     <img src="pokemon.imgJuego">
@@ -91,4 +91,3 @@ container.classList.add("hover-right")
 right.addEventListener("mouseleave", () =>
 container.classList.remove("hover-right")
 );
-
