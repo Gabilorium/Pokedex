@@ -48,27 +48,15 @@ public class HomeController : Controller
         return View("AgregarEquipo");
     }
   
-    /*[HttpPost] public IActionResult GuardarEquipo(int IdEquipo, string Nombre, DateTime FechaNacimiento)
+    [HttpPost] public IActionResult GuardarEquipo(string NombreEquipo)
     {   
+        DateTime dia = DateTime.Now;
+        Equipo Eq = new Equipo(NombreEquipo, dia);
+        BD.AgregarEquipo(Eq);
 
-        List<Jugador> lista = new List<Jugador>();
-        lista = BD.ListarJugadores(IdEquipo);
-        foreach (Jugador jug in lista)
-        {
-            if(Camiseta == jug.Camiseta)
-            {
-                @ViewBag.Repe = true;
-                @ViewBag.IdEquipo = IdEquipo;
-                return View("AgregarJugador", new{IdEquipo=IdEquipo});
-            }
-        }
-
-        Equipo eq = new Equipo(IdEquipo, Nombre, FechaNacimiento);
-        //BD.AgregarEquipo(eq); FALTA HACER ESTO EN BD
-
-        return RedirectToAction("Equipo","Home");
+        return RedirectToAction("Equipo");
     }
-
+/*
     [HttpPost] public IActionResult GuardarPokemon(int IdEquipo, string Nombre, DateTime FechaNacimiento)
     {   
 
@@ -102,7 +90,7 @@ public class HomeController : Controller
     public IActionResult EliminarEquipo(int idEquipo)
     {   
         BD.EliminarEquipo(idEquipo);
-        return View("Equipo");
+        return RedirectToAction("Equipo");
     }
 
     public IActionResult ModificarEquipo(string Nombre, int idEquipo)

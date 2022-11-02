@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "Crear Equipo";
+}
+<div class="text-center">
+    <p class="fuente titulo">Crear Equipo</p>
+
+    <form action='@Url.Action("GuardarEquipo", "Home")' method="Post" enctype="multipart/form-data">
+        <div class="form-group">           
+            <h2 class="fuente2 mb-4">Ingrese el nombre de usuario</h2> 
+            <input type="text" name="NombreEquipo" required autocomplete="off"/>
+        </div>      
+        <div class="d-grid gap-2">
+            <button type="submit" class="fuente btn btn-warning btn-lg mt-4">Guardar</button>
+        </div>
+    </form>
+</div>

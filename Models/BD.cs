@@ -51,6 +51,15 @@ namespace Pokedex.Models{
                 db.Execute(sql, new { pNombre = Nombre, pIdEquipo = IdEquipo});
             }
         }
+
+        public static void AgregarEquipo(Equipo Eq)
+        {
+            string sql = "INSERT INTO Equipo VALUES (@pNombre, @pFechaCreacion)";
+            using(SqlConnection db = new SqlConnection(_conectionString))
+            {
+                db.Execute(sql, new { pNombre = Eq.NombreEquipo, pFechaCreacion = Eq.FechaCreacion});
+            }
+        }
     }
 }
 

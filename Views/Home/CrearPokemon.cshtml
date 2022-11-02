@@ -2,51 +2,41 @@
     ViewData["Title"] = "Crear Pokemon";
 }
 <div class="text-center">
-    <div class="row mb-4">
-        <p class="fuente titulo">Equipos y Pokemon</p>
-    </div>
-    <div class="row mb-5">
-        <div class="col-6">
-            <div class="text-center">
-                <button class="fuente btn btn-warning btn-lg">Agregar un Equipo</button>
-            </div>
+    <p class="fuente titulo">Crear Pokemón</p>
+
+    <form action='@Url.Action("GuardarPokemon", "Home")' method="Post" enctype="multipart/form-data">
+        <div class="form-group">           
+            <h2 class="fuente2 mb-1">Ingrese el nombre del pokemón</h2> 
+            <input type="text" name="Nombre" required autocomplete="off"/>
         </div>
-        <div class="col-6">
-            <div class="text-center">
-                <button class="negro fuente btn btn-warning btn-lg">Agregar un Pokemon</button>
-            </div>
-        </div>      
-    </div>
 
-    <div class="row">
+        <div class="form-group">           
+            <h3 class="fuente2 mb-1">Ingrese el nombre del pokemón</h3> 
+            <input type="text" name="Nombre" required autocomplete="off"/>
+        </div> 
 
-        <div class="col-12 fondoAzul">
-            <table class="table">
-                <thead>
-                    <tr>
-                    <th class="fuente2">Id</th>
-                    <th class="fuente2">Nombre del equipo</th>
-                    <th class="fuente2">Fecha de creación</th>
-                    <th class="fuente2">Realizar cambios</th>
-                    <th class="fuente2"> </th>
-                    </tr>
-                </thead>
+        <div class="form-group">           
+            <h3 class="fuente2 mb-1">Ingrese el nombre del pokemón</h3> 
+            <input type="file" class="form-control" name="Imagen" required autocomplete="off"/>
+        </div> 
 
-                <tbody>
-                    @foreach(Equipo item in ViewBag.ListaEquipos)
-                    {
-                        <tr>
-                            <td class="fuente2">@item.IdEquipo</td>
-                            <td class="fuente2">@item.NombreEquipo</td>
-                            <td class="fuente2">@item.FechaCreacion</td>
-                            <td><a href='@Url.Action("ModificarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Modificar nombre</a></td>
-                            <td><a href='@Url.Action("EliminarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-danger fuente2">Eliminar</a></td>
-                        </tr>
-                    }
-                </tbody>
-            </table>                 
+        <div class="form-group">           
+            <h2 class="fuente2 mb-1">Ingrese el nombre del pokemón</h2> 
+            <input type="text" name="Nombre" required autocomplete="off"/>
+        </div> 
+
+        <div class="form-group">           
+            <h2 class="fuente2 mb-1">Ingrese el nombre del pokemón</h2> 
+            <input type="text" name="Nombre" required autocomplete="off"/>
+        </div> 
+
+        <div class="form-group">           
+            <h2 class="fuente2 mb-1">Ingrese el nombre del pokemón</h2> 
+            <input type="text" name="Nombre" required autocomplete="off"/>
+        </div>    
+              
+        <div class="d-grid gap-2">
+            <button type="submit" class="fuente btn btn-warning btn-lg mt-4">Guardar</button>
         </div>
-    </div>
- 
-
+    </form>
 </div>
