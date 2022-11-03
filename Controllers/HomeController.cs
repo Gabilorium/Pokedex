@@ -59,22 +59,22 @@ public class HomeController : Controller
         return RedirectToAction("Equipo");
     }
 
-    [HttpPost] public IActionResult GuardarPokemon(string nombre, string imagen, string tipo1, string tipo2, int hp, int attack, int defence, int spA, int spD, int speed)
+    [HttpPost] public IActionResult GuardarPokemon(string nombre, IFormFile imagen, string tipo1, string tipo2, int hp, int attack, int defence, int spA, int spD, int speed)
     {   
         
         if(imagen.Length>0)
         {
-            string wwwRootLocal = this.Environment.ContentRootPath + @"\wwwroot\Imagenes\FotosJug\" + imagen.FileName;
+            string wwwRootLocal = this.Environment.ContentRootPath + @"\wwwroot\Imagenes\" + imagen.FileName;
             using (var stream = System.IO.File.Create(wwwRootLocal))
             {
                 imagen.CopyToAsync(stream);
             }
         }        
 
-        MiPokemon Pok = new MiPokemon(nombre, ("/" + imagen.FileName), tipo1, tipo2, hp, attack, defence, spA, spD, speed);
-        BD.AgregarPokemon(nuevoPok);
+        MiPokemon Pok = new MiPokemon(nombre, ("/Imagenes" + imagen.FileName), tipo1, tipo2, hp, attack, defence, spA, spD, speed);
+        BD.AgregarMiPokemon(Pok);
 
-        return RedirectToAction("VerDetalleEquipo","Home", new{IdEquipo=IdEquipo});
+        return RedirectToAction("Equipo");
     }
 
     public IActionResult EliminarEquipo(int idEquipo)
