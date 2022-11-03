@@ -76,7 +76,7 @@ namespace Pokedex.Models{
             get{ return _hp;}
             set{_hp = value;}
         }
-        public int Atack
+        public int Attack
         {
             get{ return _attack;}
             set{_attack = value;}
