@@ -10,6 +10,7 @@ namespace Pokedex.Models{
     public class BD
     {
         private static List<Equipo> _ListaEquipos = new List<Equipo>();
+        private static List<MiPokemon> _ListaPokemon = new List<MiPokemon>();
 
         private static string _conectionString = 
         @"Server=127.0.0.1; DataBase=Pokemon;Trusted_Connection=True;";
@@ -79,14 +80,14 @@ namespace Pokedex.Models{
             }
         }
 
-        public static int TraerId(string Nombre)
+        public static List<MiPokemon> TraerPokemon(string Nombre)
         {
             using(SqlConnection db = new SqlConnection(_conectionString))
             {
-                string SQL = "SELECT * FROM Equipo ORDER BY FechaCreacion desc";
-                _ListaEquipos = db.Query<Equipo>(SQL).ToList();
+                string SQL = "SELECT * FROM MiPokemon WHERE Nombre = @pNombre";
+                _ListaPokemon = db.Query<MiPokemon>(SQL,new { pNombre = Nombre}).ToList();
             }
-            return _ListaEquipos;
+            return _ListaPokemon;
         }
     }
 }
