@@ -5,6 +5,16 @@
     
     <p class="fuente titulo">Modificar Equipo</p>
 
+    <form action='@Url.Action("CambiarEquipo", "Home")' method="Post" enctype="multipart/form-data">
+        <div class="form-group">           
+            <h2 class="fuente2 mb-4">Ingrese el nuevo nombre de usuario</h2> 
+            <input type="text" name="NombreEquipo" required autocomplete="off"/>
+        </div>
+        <input class="form-control" type="hidden" name="IdEquipo" value="@ViewBag.IdEquipo">      
+        <div class="d-grid gap-2">
+            <button type="submit" class="fuente btn btn-warning btn-lg mt-4">Guardar cambio</button>
+        </div>
+    </form>
 
 </div>
 

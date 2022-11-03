@@ -188,7 +188,7 @@ body {
 .chiquito{
   width: 5%;
 }
-/*-----------------------------CrearPokemon-----------------------------------*/
+/*-----------------------------CrearPokemon-----------------------------------
 .Body{
   box-shadow: 20px 20px 60px #bebebe,
   -20px -20px 60px #ffffff;
@@ -197,7 +197,7 @@ body {
 {
   height: 100vh;
   display: flex;
-}*/
+}
 .form-container{
   margin: auto;
   padding: 1.3rem;
@@ -244,4 +244,4 @@ button:focus{
 button:hover{
   box-shadow: 20px 20px 60px #bebebe,
   -20px -20px 60px #ffffff;
-}
+}*/

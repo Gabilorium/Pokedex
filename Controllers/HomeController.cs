@@ -83,10 +83,28 @@ public class HomeController : Controller
         return RedirectToAction("Equipo");
     }
 
-    public IActionResult ModificarEquipo(string Nombre, int idEquipo)
+    public IActionResult ModificarEquipo(int IdEquipo)
     {   
-        BD.ModificarEquipo(Nombre, idEquipo);
-        return View("ModificarEquipo");
+        ViewBag.IdEquipo = IdEquipo;
+        return View();
+    }
+
+    public IActionResult CambiarEquipo(string NombreEquipo, int IdEquipo)
+    {   
+        BD.ModificarEquipo(NombreEquipo, IdEquipo);
+        return RedirectToAction("Equipo");
+    }
+
+    public IActionResult AsignarPokemon(int IdEquipo)
+    {   
+        ViewBag.IdEquipo = IdEquipo;
+        return View();
+    }
+
+    public IActionResult GuardarPokemonEnEquipo(int IdEquipo, int IdPokemon)
+    {   
+        BD.AsignarPokemon(IdEquipo, IdPokemon);
+        return RedirectToAction("Equipo");
     }
 
     public IActionResult CrearEquipo()

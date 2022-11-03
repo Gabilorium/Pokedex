@@ -63,11 +63,30 @@ namespace Pokedex.Models{
 
         public static void AgregarMiPokemon(MiPokemon Pok)
         {
-            string sql = "INSERT INTO Equipo VALUES (@pNombre, @pImagen, @pTipo1, @pTipo2, @pHp, @pAttack, @pDefence, @pSpA, @pSpD, @pSpeed)";
+            string sql = "INSERT INTO MiPokemon VALUES (@pNombre, @pImagen, @pTipo1, @pTipo2, @pHp, @pAttack, @pDefence, @pSpA, @pSpD, @pSpeed)";
             using(SqlConnection db = new SqlConnection(_conectionString))
             {
                 db.Execute(sql, new { @pNombre = Pok.Nombre, @pImagen = Pok.Imagen, @pTipo1 = Pok.Tipo1, @pTipo2 = Pok.Tipo2, @pHp = Pok.Hp, @pAttack = Pok.Attack, @pDefence = Pok.Defence, @pSpA = Pok.SpA, @pSpD = Pok.SpD , @pSpeed = Pok.Speed});
             }
+        }
+
+        public static void AsignarPokemon(int IdEquipo, int IdPokemon)
+        {
+            string sql = "INSERT INTO PokemonxEquipo VALUES (@pIdEquipo, @pIdPokemon)";
+            using(SqlConnection db = new SqlConnection(_conectionString))
+            {
+                db.Execute(sql, new { pIdEquipo = IdEquipo, pIdPokemon = IdPokemon});
+            }
+        }
+
+        public static int TraerId(string Nombre)
+        {
+            using(SqlConnection db = new SqlConnection(_conectionString))
+            {
+                string SQL = "SELECT * FROM Equipo ORDER BY FechaCreacion desc";
+                _ListaEquipos = db.Query<Equipo>(SQL).ToList();
+            }
+            return _ListaEquipos;
         }
     }
 }
