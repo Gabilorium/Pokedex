@@ -40,18 +40,21 @@ const fetchData = async (id) => {
 function Pokemones(pokemon) {
   const container = document.getElementById('containerr')
   pokemon.forEach(pokemon => {
+    IdPoke = IdPokemon(pokemon.url);
+    console.log(IdPoke)
     //fetchData(IdPokemon(pokemon.url))
     container.innerHTML = `
     ${container.innerHTML}
-    <a href="DatosPokemon?idpokemon=` + IdPokemon(pokemon.url) + `"  class="noUnderLine">
+    <a href="DatosPokemon?Idpokemon=` + IdPoke + `"  class="noUnderLine" target="_blank">
     <div class="card" type="button">
-    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${IdPokemon(pokemon.url)}.png"/>
-    <!--<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${IdPokemon(pokemon.url)}.svg"/>-->
-    <span>Nº.${IdPokemon(pokemon.url)}</span>
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${IdPoke}.png"/>
+    <!--<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${IdPoke}.svg"/>-->
+    <span>Nº.${IdPoke}</span>
     <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
     </card>
     </a>
   `;
+    //MostrarPokemon(IdPoke)
   });
 }
 

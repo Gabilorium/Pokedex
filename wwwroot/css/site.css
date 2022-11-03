@@ -149,6 +149,8 @@ body {
 .noUnderLine{
   text-decoration: none !important;
   color: black;
+  margin: 0;
+  padding: 0;
 }
 .noUnderLine:hover {
   color:black; 
@@ -188,16 +190,16 @@ body {
 .chiquito{
   width: 5%;
 }
-/*-----------------------------CrearPokemon-----------------------------------*/
+/*-----------------------------CrearPokemon-----------------------------------
 .Body{
   box-shadow: 20px 20px 60px #bebebe,
   -20px -20px 60px #ffffff;
 }
-/*.container
+.container
 {
   height: 100vh;
   display: flex;
-}*/
+}
 .form-container{
   margin: auto;
   padding: 1.3rem;
@@ -245,3 +247,4 @@ button:hover{
   box-shadow: 20px 20px 60px #bebebe,
   -20px -20px 60px #ffffff;
 }
+*/
