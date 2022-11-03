@@ -23,9 +23,8 @@ public class HomeController : Controller
     {
         return View();
     }
-    public IActionResult DatosPokemon(int IdPokemon)
+    public IActionResult DatosPokemon()
     {
-        
         return View();
     }
     public IActionResult Equipo()
@@ -102,9 +101,11 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult GuardarPokemonEnEquipo(int IdEquipo, int IdPokemon)
-    {   
-        BD.AsignarPokemon(IdEquipo, IdPokemon);
+    public IActionResult GuardarPokemonEnEquipo(int IdEquipo, string Nombre)
+    {  
+        MiPokemon Pok = new MiPokemon();
+        Pok = BD.TraerPokemon(Nombre); 
+        BD.AsignarPokemon(IdEquipo, Pok.IdPokemon);
         return RedirectToAction("Equipo");
     }
 
