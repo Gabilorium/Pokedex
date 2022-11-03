@@ -27,8 +27,9 @@
                     <th class="fuente2">Id</th>
                     <th class="fuente2">Nombre del equipo</th>
                     <th class="fuente2">Fecha de creación</th>
-                    <th class="fuente2">Realizar cambios</th>
-                    <th class="fuente2"> </th>
+                    <th class="fuente2">Asignar Pokemón</th>
+                    <th class="fuente2">Modificar nombre</th>
+                    <th class="fuente2">Eliminar equipo</th>
                     </tr>
                 </thead>
 
@@ -39,6 +40,7 @@
                             <td class="fuente2">@item.IdEquipo</td>
                             <td class="fuente2">@item.NombreEquipo</td>
                             <td class="fuente2">@item.FechaCreacion</td>
+                            <td><a href='@Url.Action("AsignarPokemon","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Asignar Pokemón</a></td>
                             <td><a href='@Url.Action("ModificarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Modificar nombre</a></td>
                             <td><a href='@Url.Action("EliminarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-danger fuente2">Eliminar</a></td>
                         </tr>

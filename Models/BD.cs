@@ -10,6 +10,7 @@ namespace Pokedex.Models{
     public class BD
     {
         private static List<Equipo> _ListaEquipos = new List<Equipo>();
+        private static List<MiPokemon> _ListaPokemon = new List<MiPokemon>();
 
         private static string _conectionString = 
         @"Server=127.0.0.1; DataBase=Pokemon;Trusted_Connection=True;";
@@ -63,11 +64,30 @@ namespace Pokedex.Models{
 
         public static void AgregarMiPokemon(MiPokemon Pok)
         {
-            string sql = "INSERT INTO Equipo VALUES (@pNombre, @pImagen, @pTipo1, @pTipo2, @pHp, @pAttack, @pDefence, @pSpA, @pSpD, @pSpeed)";
+            string sql = "INSERT INTO MiPokemon VALUES (@pNombre, @pImagen, @pTipo1, @pTipo2, @pHp, @pAttack, @pDefence, @pSpA, @pSpD, @pSpeed)";
             using(SqlConnection db = new SqlConnection(_conectionString))
             {
                 db.Execute(sql, new { @pNombre = Pok.Nombre, @pImagen = Pok.Imagen, @pTipo1 = Pok.Tipo1, @pTipo2 = Pok.Tipo2, @pHp = Pok.Hp, @pAttack = Pok.Attack, @pDefence = Pok.Defence, @pSpA = Pok.SpA, @pSpD = Pok.SpD , @pSpeed = Pok.Speed});
             }
+        }
+
+        public static void AsignarPokemon(int IdEquipo, int IdPokemon)
+        {
+            string sql = "INSERT INTO PokemonxEquipo VALUES (@pIdEquipo, @pIdPokemon)";
+            using(SqlConnection db = new SqlConnection(_conectionString))
+            {
+                db.Execute(sql, new { pIdEquipo = IdEquipo, pIdPokemon = IdPokemon});
+            }
+        }
+
+        public static List<MiPokemon> TraerPokemon(string Nombre)
+        {
+            using(SqlConnection db = new SqlConnection(_conectionString))
+            {
+                string SQL = "SELECT * FROM MiPokemon WHERE Nombre = @pNombre";
+                _ListaPokemon = db.Query<MiPokemon>(SQL,new { pNombre = Nombre}).ToList();
+            }
+            return _ListaPokemon;
         }
     }
 }
