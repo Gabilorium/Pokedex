@@ -18,7 +18,7 @@
 
 
 //Cargar todos los pokemon
-fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
+fetch('https://pokeapi.co/api/v2/pokemon?limit=72&offset=649')
   .then(response => response.json())
   .then(json => {
       Pokemones(json.results);  
@@ -42,6 +42,8 @@ const fetchData = async (id) => {
       Spa: data.stats[3].base_stat,
       Spd: data.stats[4].base_stat,
       Speed: data.stats[5].base_stat,
+      Tipo1: data.types[0].type.name,
+      //Tipo2: data.types[1].type.name
     };
     console.log(data)
     MostrarPokemon(pokemon)
@@ -81,9 +83,15 @@ const MostrarPokemon = (pokemon) =>{
   container.innerHTML = `
   ${container.innerHTML}
   <h1 class="text-center">${pokemon.nombre}</h1>
+
   <img src="${pokemon.imgJuego}">
   <img src="${pokemon.img}">
-  <p>Ataque = ${pokemon.Atq}</p>
+  <h1>${pokemon.Tipo1}</h1>
+  <h2>Ataque = ${pokemon.Atq}</h2>
+  <h2>Defensa = ${pokemon.Def}</h2>
+  <h2>Ataque Especial = ${pokemon.Spa}</h2>
+  <h2>Defensa Especial = ${pokemon.Spd}</h2>
+  <h2>Velocidad = ${pokemon.Speed}</h2>
 `;
 }
 
