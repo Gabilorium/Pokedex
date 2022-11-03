@@ -248,3 +248,9 @@ button:hover{
   -20px -20px 60px #ffffff;
 }
 */
+#datos{
+  position: relative;
+}
+#datos img{
+  margin-left: 25%;
+}
