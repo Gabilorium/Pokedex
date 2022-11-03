@@ -30,7 +30,21 @@ const fetchData = async (id) => {
     console.log(id)
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await res.json()
+    const pokemon = {
+      img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
+      imgJuego: data.sprites.front_default,
+      imgCvg: data.sprites.other.dream_world.front_default,
+      nombre: data.name,
+      experiencia: data.base_experience,
+      Hp: data.stats[0].base_stat,
+      Atq: data.stats[1].base_stat,
+      Def: data.stats[2].base_stat,
+      Spa: data.stats[3].base_stat,
+      Spd: data.stats[4].base_stat,
+      Speed: data.stats[5].base_stat,
+    };
     console.log(data)
+    MostrarPokemon(pokemon)
   }catch(error){
     console.log(error)
   }
@@ -54,18 +68,23 @@ function Pokemones(pokemon) {
     </card>
     </a>
   `;
-    //MostrarPokemon(IdPoke)
   });
 }
 
 
-function MostrarPokemon(IdPokemon) {
+function getPokemon(IdPokemon) {
   fetchData(IdPokemon);
+}
+const MostrarPokemon = (pokemon) =>{
+  console.log(pokemon)
   const container = document.getElementById('datos')
-    container.innerHTML = `
-    ${container.innerHTML}
-    <img src="pokemon.imgJuego">
-  `;
+  container.innerHTML = `
+  ${container.innerHTML}
+  <h1 class="text-center">${pokemon.nombre}</h1>
+  <img src="${pokemon.imgJuego}">
+  <img src="${pokemon.img}">
+  <p>Ataque = ${pokemon.Atq}</p>
+`;
 }
 
 // En esta ruta de la API no nos viene el id de cada pokemon, pero si que nos viene
@@ -74,23 +93,3 @@ function MostrarPokemon(IdPokemon) {
 function IdPokemon(url) {
   return url.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/','')
 }
-
-//Cambiar Clases del div
-const left = document.querySelector(".left"); 
-const right = document.querySelector(".right"); 
-const container = document.querySelector(".container");
-
-left.addEventListener("mouseenter", () => 
-container.classList.add("hover-left")
-); 
-left.addEventListener("mouseleave", () => 
-container.classList.remove("hover-left")
-); 
-
-right.addEventListener("mouseenter", () =>
-container.classList.add("hover-right") 
-);
-
-right.addEventListener("mouseleave", () =>
-container.classList.remove("hover-right")
-);
