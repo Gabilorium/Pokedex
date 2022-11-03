@@ -80,14 +80,15 @@ namespace Pokedex.Models{
             }
         }
 
-        public static List<MiPokemon> TraerPokemon(string Nombre)
+        public static MiPokemon TraerPokemon(string Nombre)
         {
+            MiPokemon Pok;
+            string SQL = "SELECT * FROM MiPokemon WHERE Nombre = @pNombre";
             using(SqlConnection db = new SqlConnection(_conectionString))
             {
-                string SQL = "SELECT * FROM MiPokemon WHERE Nombre = @pNombre";
-                _ListaPokemon = db.Query<MiPokemon>(SQL,new { pNombre = Nombre}).ToList();
+                Pok = db.QueryFirstOrDefault<MiPokemon>(SQL, new {pNombre = Nombre});
             }
-            return _ListaPokemon;
+            return Pok;
         }
     }
 }
