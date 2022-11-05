@@ -83,15 +83,82 @@ const MostrarPokemon = (pokemon) =>{
   container.innerHTML = `
   ${container.innerHTML}
   <h1 class="text-center">${pokemon.nombre}</h1>
-
   <img src="${pokemon.imgJuego}">
   <img src="${pokemon.img}">
   <h1>${pokemon.Tipo1}</h1>
-  <h2>Ataque = ${pokemon.Atq}</h2>
-  <h2>Defensa = ${pokemon.Def}</h2>
-  <h2>Ataque Especial = ${pokemon.Spa}</h2>
-  <h2>Defensa Especial = ${pokemon.Spd}</h2>
-  <h2>Velocidad = ${pokemon.Speed}</h2>
+  <table class="tabla-estadisticas">
+    <tbody>
+      <tr>
+        <th colspan="2" rowspan="2" class="text-center titulo-tabla">
+          Stats
+        </th>
+      </tr>
+      <tr>
+      </tr>      
+      <tr class="text-center barra-completa-hp">
+        <th class="texto-tabla">
+          <div class="nombre-stat">Hp:</div>
+          <div class="numero-stat">${pokemon.Hp}</div>
+        </th>
+        <td class="barra-stat">
+          <div class="hp" style="width:calc(100% * ${pokemon.Hp}/255)"></div>
+        </td>
+      </tr>
+      <tr class="text-center barra-completa-atq">
+        <th class="texto-tabla">
+          <div class="nombre-stat">Ataque:</div>
+          <div class="numero-stat">${pokemon.Atq}</div>
+        </th>
+        <td class="barra-stat" >
+          <div class="atq" style="width:calc(100% * ${pokemon.Atq}/255)"></div>
+        </td>     
+      </tr>
+      <tr class="text-center barra-completa-def">
+        <th class="texto-tabla">
+          <div class="nombre-stat">Defensa:</div>
+          <div class="numero-stat">${pokemon.Def}</div>
+        </th>
+        <td class="barra-stat" >
+          <div class="def" style="width:calc(100% * ${pokemon.Def}/255)"></div>
+        </td>     
+     </tr>
+      <tr class="text-center barra-completa-spa">
+        <th class="texto-tabla">
+          <div class="nombre-stat">Sp.Atq:</div>
+          <div class="numero-stat">${pokemon.Spa}</div>
+        </th>
+        <td class="barra-stat" >
+          <div class="spa" style="width:calc(100% * ${pokemon.Spa}/255)"></div>
+        </td>     
+      </tr>
+      <tr class="text-center barra-completa-spd">
+        <th class="texto-tabla">
+          <div class="nombre-stat">Sp.Def:</div>
+          <div class="numero-stat">${pokemon.Spd}</div>
+        </th>
+        <td class="barra-stat" >
+          <div class="spd" style="width:calc(100% * ${pokemon.Spd}/255)"></div>
+        </td>
+      </tr>
+      <tr class="text-center barra-completa-speed">
+        <th class="texto-tabla">
+        <div class="nombre-stat">Speed:</div>
+        <div class="numero-stat">${pokemon.Speed}</div>
+        </th>
+        <td class="barra-stat" >
+          <div class="speed" style="width:calc(100% * ${pokemon.Speed}/255)"></div>
+        </td>
+      </tr>
+      <tr style="background: #A27DFA;">
+        <th style="width:85px; padding-left:0.5em; padding-right:0.5em">
+        <div class="nombre-stat">Total:</div>
+        <div class="numero-stat">${pokemon.Hp + pokemon.Atq + pokemon.Def + pokemon.Spa + pokemon.Spd + pokemon.Speed}</div>
+        </th>
+        <td>
+        </td>
+      </tr>
+  </tbody>
+</table>
 `;
 }
 

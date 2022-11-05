@@ -372,3 +372,85 @@ button:hover{
   animation: btn-anim4 1s linear infinite;
   animation-delay: .75s
 }*/
+
+#datos{
+  position: relative;
+}
+#datos img{
+  margin-left: 25%;
+}
+/*---------------------Tabla Estadisticas-----------------------------*/
+.tabla-estadisticas{
+  background: #7038F8;
+  border-radius: 10px;
+  border: 3px solid #A890F0;
+  white-space:nowrap;
+  border-collapse: separate !important;
+}
+.titulo-tabla{
+  background: #A27DFA; 
+  border-top-left-radius: 10px; 
+}
+.texto-tabla{
+  width:125px; 
+  padding-left:0.5em; 
+  padding-right:0.5em;
+}
+.nombre-stat{
+  float:left;
+}
+.numero-stat{
+  float:right;
+}
+/*----------------------------------Barras----------------------------*/
+.barra-completa-hp{
+  background: #A7DB8D;
+}
+.barra-completa-atq{
+  background: #F5AC78;
+}
+.barra-completa-def{
+  background: #FAE078;
+}
+.barra-completa-spa{
+  background: #FF5959;
+}
+.barra-completa-spd{
+  background: #9DB7F5;
+}
+.barra-completa-speed{
+  background: #FA92B2;
+}
+.barra-stat{
+  width:255px;
+}
+.hp{
+  background-color: #78C850; 
+  border: 1px solid #4E8234;  
+  height:20px;
+}
+.atq{
+ background-color: #F08030; 
+ border: 1px solid #9C531F; 
+ height:20px;
+}
+.def{
+  background-color: #F8D030; 
+  border: 1px solid #A1871F; 
+  height:20px;
+}
+.spa{
+  background-color: #FF0000;
+  border: 1px solid #A60000; 
+  height:20px;
+}
+.spd{
+  background-color: #6890F0; 
+  border: 1px solid #445E9C; 
+  height:20px;
+}
+.speed{
+  background-color: #F85888; 
+  border: 1px solid #A13959; 
+  height:20px;
+}

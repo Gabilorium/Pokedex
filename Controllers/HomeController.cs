@@ -23,9 +23,9 @@ public class HomeController : Controller
     {
         return View();
     }
-    public IActionResult DatosPokemon()
+    public IActionResult DatosPokemon(int IdPokemon)
     {
-        //ViewBag.IdPokemon = IdPokemon;
+        ViewBag.IdPokemon = IdPokemon;
         return View();
     }
     public IActionResult Equipo()
