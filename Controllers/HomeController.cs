@@ -42,6 +42,11 @@ public class HomeController : Controller
     public IActionResult CargarPokemon(string nombre, string imagen, string tipo1, string tipo2, int hp, int attack, int defence, int spA, int spD, int speed)
     {
         MiPokemon Poke = new MiPokemon(nombre, imagen, tipo1, tipo2, hp, attack, defence, spA, spD, speed);
+        /*if((Poke.hp > 255) && (Poke.attack > 255) && (Poke.defence > 255) && (Poke.spA > 255) & (Poke.spD > 255) & (Poke.speed > 255))
+        {
+            
+        }*/
+        return View("Respuesta");
         BD.CargarPokemon(Poke);
         return View("Pokedex");
     }

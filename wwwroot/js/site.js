@@ -19,18 +19,19 @@
 
 //Cargar todos los pokemon
 fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
-    .then(response => response.json())
-    .then(json => {
-    Pokemones(json.results);  
+  .then(response => response.json())
+  .then(json => {
+  Pokemones(json.results);  
 });
-
 
 function GetDatta(){
     var e = document.getElementById("filtroPoke");
+    var del = document.getElementById("containerr").childElement;
+    console.log(del)
     var val = e.value;
-    console.log(typeof(val))
+    
     switch (val) {
-    case "1":
+    case "1":     
       fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
           .then(response => response.json())
           .then(json => {
@@ -128,15 +129,24 @@ const fetchData = async (id) => {
 // Pone los pokemos que agarra del json en el container
 function Pokemones(pokemon) {
   const container = document.getElementById('containerr')
+  $("#containerr").html("");
   pokemon.forEach(pokemon => {
     IdPoke = IdPokemon(pokemon.url);
     //fetchData(IdPokemon(pokemon.url))
+    /* NO SE PORQUE PERO QUEDA HORRIBLE
+    $("#containerr").append('<a href="DatosPokemon?Idpokemon=' + IdPoke + '" class="noUnderLine" target="_blank">')
+    $("#containerr").append('<div class="card" type="button">')
+    //$("#containerr").append('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+IdPoke+'.png"/>')
+    $("#containerr").append('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/'+IdPoke+'.svg"/>')
+    $("#containerr").append('<h2>' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)+'</h2>')
+    $("#containerr").append('</card>')
+    $("#containerr").append('</a>')*/
     container.innerHTML = `
     ${container.innerHTML}
     <a href="DatosPokemon?Idpokemon=` + IdPoke + `"  class="noUnderLine" target="_blank">
     <div class="card" type="button">
-    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${IdPoke}.png"/>
-    <!--<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${IdPoke}.svg"/>-->
+    <!--<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${IdPoke}.png"/>-->
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${IdPoke}.png"/>
     <span>Nº.${IdPoke}</span>
     <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
     </card>
