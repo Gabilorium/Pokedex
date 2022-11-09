@@ -18,12 +18,13 @@
             <table class="table">
                 <thead>
                     <tr>
-                    <th class="fuente2">Id</th>
-                    <th class="fuente2">Nombre del equipo</th>
-                    <th class="fuente2">Fecha de creación</th>
-                    <th class="fuente2">Asignar Pokemón</th>
-                    <th class="fuente2">Modificar nombre</th>
-                    <th class="fuente2">Eliminar equipo</th>
+                        <th class="fuente2">Id</th>
+                        <th class="fuente2">Nombre del equipo</th>
+                        <th class="fuente2">Fecha de creación</th>
+                        <th class="fuente2">Pokemones</th>
+                        <th class="fuente2">Asignar Pokemón</th>
+                        <th class="fuente2">Modificar nombre</th>
+                        <th class="fuente2">Eliminar equipo</th>
                     </tr>
                 </thead>
 
@@ -34,6 +35,7 @@
                             <td class="fuente2">@item.IdEquipo</td>
                             <td class="fuente2">@item.NombreEquipo</td>
                             <td class="fuente2">@item.FechaCreacion</td>
+                            <td><a href='@Url.Action("PokemonesDelEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Pokemones</a></td>
                             <td><a href='@Url.Action("AsignarPokemon","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Asignar Pokemón</a></td>
                             <td><a href='@Url.Action("ModificarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Modificar nombre</a></td>
                             <td><a href='@Url.Action("EliminarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-danger fuente2">Eliminar</a></td>
@@ -61,13 +63,13 @@
             <table class="table">
                 <thead>
                     <tr>
-                    <th class="fuente2">Id</th>
-                    <th class="fuente2">Nombre</th>
-                    <th class="fuente2">Imagen</th>
-                    <th class="fuente2">Vida</th>
-                    <th class="fuente2">Ataque</th>
-                    <th class="fuente2">Defensa</th>
-                    <th class="fuente2">Eliminar Pokemón</th>
+                        <th class="fuente2">Id</th>
+                        <th class="fuente2">Nombre</th>
+                        <th class="fuente2">Imagen</th>
+                        <th class="fuente2">Vida</th>
+                        <th class="fuente2">Ataque</th>
+                        <th class="fuente2">Defensa</th>
+                        <th class="fuente2">Eliminar Pokemón</th>
                     </tr>
                 </thead>
 

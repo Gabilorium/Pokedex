@@ -112,7 +112,7 @@ public class HomeController : Controller
     public IActionResult GuardarPokemonEnEquipo(int IdEquipo, string Nombre)
     {  
         int IdPok = BD.TraerIdPokemon(Nombre); 
-        if(IdPok>0)
+        if(IdPok>0 && IdEquipo>0)
         {
             BD.AsignarPokemon(IdEquipo, IdPok);
         }
@@ -126,6 +126,12 @@ public class HomeController : Controller
 
     public IActionResult CrearPokemon()
     {   
+        return View();
+    }
+
+    public IActionResult PokemonesDelEquipo(int IdEquipo)
+    {   
+        ViewBag.InfoPokemones = BD.TraerPokemonesDelEquipo(IdEquipo);
         return View();
     }
 

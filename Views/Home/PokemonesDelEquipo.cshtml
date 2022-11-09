@@ -1,0 +1,61 @@
+@{
+    ViewData["Title"] = "Equipos";
+}
+<div class="text-center">
+    <div class="row mb-4">
+        <p class="fuente titulo">Pokemones del equipo</p>
+    </div>
+
+
+@if(ViewBag.InfoPokemones != null)
+{
+    MiPokemon pok = new MiPokemon();
+    <div class="row">
+
+        <div class="col-12 fondoAzul">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="fuente2">Id</th>
+                        <th class="fuente2">Nombre</th>
+                        <th class="fuente2">Imagen</th>
+                        <th class="fuente2">Tipo 1</th>
+                        <th class="fuente2">Tipo 2</th>
+                        <th class="fuente2">Vida</th>
+                        <th class="fuente2">Ataque</th>
+                        <th class="fuente2">Defensa</th>
+                        <th class="fuente2">Velocidad de ataque</th>
+                        <th class="fuente2">Velocidad de defensa</th>
+                        <th class="fuente2">Velocidad</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach(int item in ViewBag.InfoPokemones)
+                    {
+                        pok = BD.ObtenerMiPokemonPorId(@item);
+                        <tr>
+                            <td class="fuente2">@item</td>
+                            <td class="fuente2">@pok.Nombre</td>
+                            <td><img class="imgSize" src="/Imagenes/@pok.Imagen"></td>
+                            <td class="fuente2">@pok.Tipo1</td>
+                            <td class="fuente2">@pok.Tipo2</td>
+                            <td class="fuente2">@pok.Hp</td>
+                            <td class="fuente2">@pok.Attack</td>
+                            <td class="fuente2">@pok.Defence</td>
+                            <td class="fuente2">@pok.SpA</td>
+                            <td class="fuente2">@pok.SpD</td>
+                            <td class="fuente2">@pok.Speed</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>                 
+        </div>
+    </div>
+}
+@if(ViewBag.InfoPokemones == null)
+{
+    <p class="fuente2">No hay pokemones en el equipo</p>
+}
+    
+</div>

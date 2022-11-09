@@ -11,6 +11,7 @@ namespace Pokedex.Models{
     {
         private static List<Equipo> _ListaEquipos = new List<Equipo>();
         private static List<MiPokemon> _ListaPokemon = new List<MiPokemon>();
+        private static List<PokemonxEquipo> _ListaPokemonXEquipo = new List<PokemonxEquipo>();
 
         private static string _conectionString = 
         @"Server=127.0.0.1; DataBase=Pokemon;Trusted_Connection=True;";
@@ -105,9 +106,31 @@ namespace Pokedex.Models{
             string SQL = "SELECT IdMiPokemon FROM MiPokemon WHERE Nombre = @pNombre";
             using(SqlConnection db = new SqlConnection(_conectionString))
             {
-                Pok = db.Execute(SQL, new {pNombre = Nombre});
+                Pok = db.QueryFirstOrDefault<int>(SQL, new {pNombre = Nombre});
             }
             return Pok;
+        }
+
+        public static List<int> TraerPokemonesDelEquipo(int IdEquipo)
+        {
+            List<int> listaPok = new List<int>();
+            using(SqlConnection db = new SqlConnection(_conectionString))
+            {
+                string SQL = "SELECT IdPokemon FROM PokemonxEquipo WHERE IdEquipo = @pIdEquipo";
+                listaPok = db.Query<int>(SQL, new {pIdEquipo = IdEquipo}).ToList();
+            }
+            return listaPok;
+        }
+
+         public static MiPokemon ObtenerMiPokemonPorId(int IdMiPokemon)
+        {
+            MiPokemon pok = new MiPokemon();
+            using(SqlConnection db = new SqlConnection(_conectionString))
+            {
+                string SQL = "SELECT * FROM MiPokemon WHERE IdMiPokemon = @pIdMiPokemon";
+                pok = db.QueryFirstOrDefault<MiPokemon>(SQL, new {pIdMiPokemon = IdMiPokemon});
+            }
+            return pok;
         }
     }
 }
