@@ -5,18 +5,12 @@
     <div class="row mb-4">
         <p class="fuente titulo">Equipos y Pokemon</p>
     </div>
-    <div class="row mb-5">
-        <div class="col-6">
-            <div class="text-center">
-                <a href='@Url.Action("CrearEquipo","Home")' class="fuente btn btn-warning btn-lg">Agregar un Equipo</a>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="text-center">
-                <a href='@Url.Action("CrearPokemon","Home")' class="negro fuente btn btn-warning btn-lg">Agregar un Pokemon</a>
-            </div>
-        </div>      
+
+    <div class="row mb-4">
+        <p class="fuente subtitulo">Equipos:</p>
     </div>
+
+    
 
     <div class="row">
 
@@ -47,6 +41,57 @@
                     }
                 </tbody>
             </table>                 
+        </div>
+    </div>
+
+    <div class="row mt-3 mb-5">
+        <div class="text-center">
+            <a href='@Url.Action("CrearEquipo","Home")' class="fuente btn btn-warning btn-lg">Agregar un Equipo</a>
+        </div>
+    </div>
+
+
+    <div class="row mb-4">
+        <p class="fuente subtitulo">Pokemon:</p>
+    </div>
+
+    <div class="row">
+
+        <div class="col-12 fondoAzul">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th class="fuente2">Id</th>
+                    <th class="fuente2">Nombre</th>
+                    <th class="fuente2">Imagen</th>
+                    <th class="fuente2">Vida</th>
+                    <th class="fuente2">Ataque</th>
+                    <th class="fuente2">Defensa</th>
+                    <th class="fuente2">Eliminar Pokemón</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach(MiPokemon item in ViewBag.ListaPokemon)
+                    {
+                        <tr>
+                            <td class="fuente2">@item.IdMiPokemon</td>
+                            <td class="fuente2">@item.Nombre</td>
+                            <td><img class="imgSize" src="/Imagenes/@item.Imagen"></td>
+                            <td class="fuente2">@item.Hp</td>
+                            <td class="fuente2">@item.Attack</td>
+                            <td class="fuente2">@item.Defence</td>
+                            <td><a href='@Url.Action("EliminarPokemon","Home", new{IdMiPokemon=item.IdMiPokemon})' class="btn btn-danger fuente2">Eliminar</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>                 
+        </div>
+    </div>
+
+    <div class="row mt-3 mb-5">
+        <div class="text-center">
+            <a href='@Url.Action("CrearPokemon","Home")' class="negro fuente btn btn-warning btn-lg">Agregar un Pokemon</a>
         </div>
     </div>
  

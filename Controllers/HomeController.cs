@@ -31,6 +31,7 @@ public class HomeController : Controller
     public IActionResult Equipo()
     {
         ViewBag.ListaEquipos = BD.ObtenerEquipo();
+        ViewBag.ListaPokemon = BD.ObtenerMiPokemon();
         return View();
     }
     public IActionResult Privacy()
@@ -72,7 +73,7 @@ public class HomeController : Controller
             }
         }        
 
-        MiPokemon Pok = new MiPokemon(nombre, ("/Imagenes" + imagen.FileName), tipo1, tipo2, hp, attack, defence, spA, spD, speed);
+        MiPokemon Pok = new MiPokemon(nombre, ("" + imagen.FileName), tipo1, tipo2, hp, attack, defence, spA, spD, speed);
         BD.AgregarMiPokemon(Pok);
 
         return RedirectToAction("Equipo");
@@ -81,6 +82,12 @@ public class HomeController : Controller
     public IActionResult EliminarEquipo(int idEquipo)
     {   
         BD.EliminarEquipo(idEquipo);
+        return RedirectToAction("Equipo");
+    }
+
+        public IActionResult EliminarPokemon(int IdMiPokemon)
+    {   
+        BD.EliminarPokemon(IdMiPokemon);
         return RedirectToAction("Equipo");
     }
 
@@ -104,9 +111,11 @@ public class HomeController : Controller
 
     public IActionResult GuardarPokemonEnEquipo(int IdEquipo, string Nombre)
     {  
-        MiPokemon Pok = new MiPokemon();
-        Pok = BD.TraerPokemon(Nombre); 
-        BD.AsignarPokemon(IdEquipo, Pok.IdPokemon);
+        int IdPok = BD.TraerIdPokemon(Nombre); 
+        if(IdPok>0)
+        {
+            BD.AsignarPokemon(IdEquipo, IdPok);
+        }
         return RedirectToAction("Equipo");
     }
 

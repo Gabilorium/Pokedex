@@ -3,16 +3,14 @@
 }
 <div class="text-center">
     <p class="fuente titulo">Asignar un pokemón</p>
+    <div class="login-box">
 
-    <form action='@Url.Action("GuardarPokemonEnEquipo", "Home")' method="Post" enctype="multipart/form-data">
-        <div class="container fondoAzul">
-            <div class="form-group">           
-                <h2 class="fuente2 mb-4">Ingrese el nombre del pokemón para que sea asignado</h2> 
-                <input type="text" name="Nombre" required autocomplete="off"/>
-            </div> 
-        </div>     
-        <div class="d-grid gap-2">
-            <button type="submit" class="fuente btn btn-warning btn-lg mt-4">Guardar</button>
-        </div>
-    </form>
+        <form action='@Url.Action("GuardarPokemonEnEquipo", "Home")' method="Post" enctype="multipart/form-data">
+            <div class="user-box">
+                <input type="text" name="Nombre" required autocomplete="off">
+                <label>Nombre</label>
+            </div>
+            <button type="submit" class="fuente2 btn btn-warning btn-lg mt-4">Guardar</button>
+        </form>
+    </div>
 </div>

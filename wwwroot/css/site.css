@@ -184,12 +184,21 @@ body {
 	color:rgb(255,205,0) ;
   -webkit-text-stroke: rgb(53,106,188) 7.8px;
 }
+.subtitulo{
+  margin-bottom: 4%;
+  font-size: 3rem;
+	color:rgb(255,205,0) ;
+  -webkit-text-stroke: rgb(53,106,188) 4px;
+}
 .fondoAzul{
   background-color:rgb(53,106,188);
   border-radius: 10px;
 }
 .chiquito{
   width: 5%;
+}
+.imgSize{
+  height:8%;
 }
 /*-----------------------------CrearPokemon-----------------------------------
 .Body{

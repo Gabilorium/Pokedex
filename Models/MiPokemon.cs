@@ -8,7 +8,7 @@ using System.Timers;
 namespace Pokedex.Models{
     public class MiPokemon
     {
-        private int _idPokemon;
+        private int _idMiPokemon;
         private string _nombre;
         private string _imagen;
         private string _tipo1; 
@@ -46,10 +46,10 @@ namespace Pokedex.Models{
             _spD = 0;
             _speed = 0;    
         }
-        public int IdPokemon
+        public int IdMiPokemon
         {
-            get{ return _idPokemon;}
-            set{_idPokemon = value;}
+            get{ return _idMiPokemon;}
+            set{_idMiPokemon = value;}
         }
         public string Nombre
         {

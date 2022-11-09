@@ -21,7 +21,7 @@ namespace Pokedex.Models{
             string SQL = "INSERT INTO MiPokemon(IdPOkemon,Nombre) VALUES (@pIdPokemon, @pNombre)";
             using(SqlConnection db = new SqlConnection(_conectionString))
             {
-                db.Execute(SQL, new{pIdPokemon = Poke.IdPokemon, pNombre = Poke.Nombre});
+                db.Execute(SQL, new{pIdPokemon = Poke.IdMiPokemon, pNombre = Poke.Nombre});
             }
         }
 
@@ -35,12 +35,31 @@ namespace Pokedex.Models{
             return _ListaEquipos;
         }
 
+        public static List<MiPokemon> ObtenerMiPokemon()
+        {
+            using(SqlConnection db = new SqlConnection(_conectionString))
+            {
+                string SQL = "SELECT * FROM MiPokemon ORDER BY IdMiPokemon asc";
+                _ListaPokemon = db.Query<MiPokemon>(SQL).ToList();
+            }
+            return _ListaPokemon;
+        }
+
         public static void EliminarEquipo(int IdEquipo)
         {
             string sql = "DELETE FROM Equipo WHERE IdEquipo = @pIdEquipo";
             using(SqlConnection db = new SqlConnection(_conectionString))
             {
                 db.Execute(sql, new { pIdEquipo = IdEquipo});
+            }
+        }
+
+        public static void EliminarPokemon(int IdMiPokemon)
+        {
+            string sql = "DELETE FROM MiPokemon WHERE IdMiPokemon = @pIdMiPokemon";
+            using(SqlConnection db = new SqlConnection(_conectionString))
+            {
+                db.Execute(sql, new { pIdMiPokemon = IdMiPokemon});
             }
         }
 
@@ -80,13 +99,13 @@ namespace Pokedex.Models{
             }
         }
 
-        public static MiPokemon TraerPokemon(string Nombre)
+        public static int TraerIdPokemon(string Nombre)
         {
-            MiPokemon Pok;
-            string SQL = "SELECT * FROM MiPokemon WHERE Nombre = @pNombre";
+            int Pok;
+            string SQL = "SELECT IdMiPokemon FROM MiPokemon WHERE Nombre = @pNombre";
             using(SqlConnection db = new SqlConnection(_conectionString))
             {
-                Pok = db.QueryFirstOrDefault<MiPokemon>(SQL, new {pNombre = Nombre});
+                Pok = db.Execute(SQL, new {pNombre = Nombre});
             }
             return Pok;
         }
