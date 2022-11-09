@@ -104,9 +104,17 @@ const fetchData = async (id) => {
     console.log(id)
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await res.json()
+    data.types.forEach(type => {
+      tipo = type.type.name;
+      console.log(tipo)
+      var i = 0;
+      i = i+1;
+      console.log(data.types.length)
+    })
     const pokemon = {
       img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
       imgJuego: data.sprites.front_default,
+      imgJuegoShiny: data.sprites.front_shiny,
       imgCvg: data.sprites.other.dream_world.front_default,
       nombre: data.name,
       experiencia: data.base_experience,
@@ -117,6 +125,12 @@ const fetchData = async (id) => {
       Spd: data.stats[4].base_stat,
       Speed: data.stats[5].base_stat,
       Tipo1: data.types[0].type.name,
+      //Tipo2: data.types[1].type.name,
+      Movimientos:    
+      data.moves.forEach(move => {
+        movimiento = move.move.name;
+        //console.table(movimiento)
+      }),
       //Tipo2: data.types[1].type.name
     };
     console.log(data)
@@ -133,15 +147,14 @@ function Pokemones(pokemon) {
   pokemon.forEach(pokemon => {
     IdPoke = IdPokemon(pokemon.url);
     //fetchData(IdPokemon(pokemon.url))
-    /* NO SE PORQUE PERO QUEDA HORRIBLE
-    $("#containerr").append('<a href="DatosPokemon?Idpokemon=' + IdPoke + '" class="noUnderLine" target="_blank">')
-    $("#containerr").append('<div class="card" type="button">')
+    // NO SE PORQUE PERO QUEDA HORRIBLE
+    $("#containerr").append('<a href="DatosPokemon?Idpokemon=' + IdPoke + '" class="noUnderLine" target="blank"> <div class="card" type="button"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+IdPoke+'.png"/><span>Nº.'+IdPoke+'</span><h2>' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)+'</h2></card></a>')
     //$("#containerr").append('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+IdPoke+'.png"/>')
-    $("#containerr").append('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/'+IdPoke+'.svg"/>')
+    /*$("#containerr").append('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/'+IdPoke+'.svg"/>')
     $("#containerr").append('<h2>' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)+'</h2>')
     $("#containerr").append('</card>')
     $("#containerr").append('</a>')*/
-    container.innerHTML = `
+    /*container.innerHTML = `
     ${container.innerHTML}
     <a href="DatosPokemon?Idpokemon=` + IdPoke + `"  class="noUnderLine" target="_blank">
     <div class="card" type="button">
@@ -151,7 +164,7 @@ function Pokemones(pokemon) {
     <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
     </card>
     </a>
-  `;
+  `;*/
   });
 }
 
@@ -165,9 +178,11 @@ const MostrarPokemon = (pokemon) =>{
   container.innerHTML = `
   ${container.innerHTML}
   <h1 class="text-center">${pokemon.nombre}</h1>
-  <img src="${pokemon.imgJuego}">
   <img src="${pokemon.img}">
+  <img src="${pokemon.imgJuego}">
+  <img src="${pokemon.imgJuegoShiny}">
   <h1>${pokemon.Tipo1}</h1>
+  <p>${pokemon.movimiento}</p>
   <table class="tabla-estadisticas">
     <tbody>
       <tr>
