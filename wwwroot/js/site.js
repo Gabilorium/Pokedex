@@ -18,11 +18,84 @@
 
 
 //Cargar todos los pokemon
-fetch('https://pokeapi.co/api/v2/pokemon?limit=72&offset=649')
-  .then(response => response.json())
-  .then(json => {
-      Pokemones(json.results);  
+fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
+    .then(response => response.json())
+    .then(json => {
+    Pokemones(json.results);  
 });
+
+
+function GetDatta(){
+    var e = document.getElementById("filtroPoke");
+    var val = e.value;
+    console.log(typeof(val))
+    switch (val) {
+    case "1":
+      fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
+          .then(response => response.json())
+          .then(json => {
+          Pokemones(json.results);  
+        });
+    break;
+
+    case "2":
+      fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
+          .then(response => response.json())
+          .then(json => {
+          Pokemones(json.results);  
+        });
+    break;
+
+    case "3":
+      fetch('https://pokeapi.co/api/v2/pokemon?limit=135&offset=251')
+        .then(response => response.json())
+        .then(json => {
+        Pokemones(json.results);  
+      });
+    break;
+
+    case "4":
+      fetch('https://pokeapi.co/api/v2/pokemon?limit=108&offset=386')
+        .then(response => response.json())
+        .then(json => {
+        Pokemones(json.results);  
+      });
+    break;
+
+    case "5":
+      fetch('https://pokeapi.co/api/v2/pokemon?limit=155&offset=494')
+        .then(response => response.json())
+        .then(json => {
+        Pokemones(json.results);  
+      });
+    break;
+
+    case "6":
+      fetch('https://pokeapi.co/api/v2/pokemon?limit=72&offset=649')
+        .then(response => response.json())
+        .then(json => {
+        Pokemones(json.results);  
+      });
+    break;
+
+    case "7":
+      fetch('https://pokeapi.co/api/v2/pokemon?limit=89&offset=721')
+        .then(response => response.json())
+        .then(json => {
+        Pokemones(json.results);  
+      });
+    break;
+
+    case "8":
+      fetch('https://pokeapi.co/api/v2/pokemon?limit=80&offset=810')
+        .then(response => response.json())
+        .then(json => {
+        Pokemones(json.results);  
+      });
+    break;
+  }
+};
+
 
 //Conceguir la datta de 1 solo pokemon
 const fetchData = async (id) => {
@@ -57,7 +130,6 @@ function Pokemones(pokemon) {
   const container = document.getElementById('containerr')
   pokemon.forEach(pokemon => {
     IdPoke = IdPokemon(pokemon.url);
-    console.log(IdPoke)
     //fetchData(IdPokemon(pokemon.url))
     container.innerHTML = `
     ${container.innerHTML}
