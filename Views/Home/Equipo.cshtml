@@ -36,8 +36,8 @@
                             <td class="fuente2">@item.NombreEquipo</td>
                             <td class="fuente2">@item.FechaCreacion</td>
                             <td><a href='@Url.Action("PokemonesDelEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Pokemones</a></td>
-                            <td><a href='@Url.Action("AsignarPokemon","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Asignar Pokemón</a></td>
-                            <td><a href='@Url.Action("ModificarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Modificar nombre</a></td>
+                            <td><a href='@Url.Action("AsignarPokemon","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Asignar</a></td>
+                            <td><a href='@Url.Action("ModificarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Modificar</a></td>
                             <td><a href='@Url.Action("EliminarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-danger fuente2">Eliminar</a></td>
                         </tr>
                     }
@@ -66,9 +66,15 @@
                         <th class="fuente2">Id</th>
                         <th class="fuente2">Nombre</th>
                         <th class="fuente2">Imagen</th>
+                        <th class="fuente2">Tipo 1</th>
+                        <th class="fuente2">Tipo 2</th>
                         <th class="fuente2">Vida</th>
                         <th class="fuente2">Ataque</th>
                         <th class="fuente2">Defensa</th>
+                        <th class="fuente2">Velocidad de ataque</th>
+                        <th class="fuente2">Velocidad de defensa</th>
+                        <th class="fuente2">Velocidad</th>
+                        <th class="fuente2">Modificar Pokemón</th>
                         <th class="fuente2">Eliminar Pokemón</th>
                     </tr>
                 </thead>
@@ -80,9 +86,14 @@
                             <td class="fuente2">@item.IdMiPokemon</td>
                             <td class="fuente2">@item.Nombre</td>
                             <td><img class="imgSize" src="/Imagenes/@item.Imagen"></td>
+                            <td class="fuente2">@item.Tipo1</td>
+                            <td class="fuente2">@item.Tipo2</td>
                             <td class="fuente2">@item.Hp</td>
                             <td class="fuente2">@item.Attack</td>
                             <td class="fuente2">@item.Defence</td>
+                            <td class="fuente2">@item.SpA</td>
+                            <td class="fuente2">@item.SpD</td>
+                            <td class="fuente2">@item.Speed</td>
                             <td><a href='@Url.Action("EliminarPokemon","Home", new{IdMiPokemon=item.IdMiPokemon})' class="btn btn-danger fuente2">Eliminar</a></td>
                         </tr>
                     }

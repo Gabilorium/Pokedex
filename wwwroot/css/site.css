@@ -263,8 +263,9 @@ button:hover{
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 40%;
+  width: 60%;
   padding: 3%;
+  margin-top: 5%;
   transform: translate(-50%, -50%);
   background: rgb(53,106,188);
   box-sizing: border-box;

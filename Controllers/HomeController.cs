@@ -108,6 +108,27 @@ public class HomeController : Controller
         return RedirectToAction("Equipo");
     }
 
+    public IActionResult ModificarPokemon(int IdMiPokemon)
+    {   
+        ViewBag.IdMiPokemon = IdMiPokemon;
+        return View();
+    }
+
+    public IActionResult CambiarPokemon(int IdMiPokemon, string nombre, IFormFile imagen, string tipo1, string tipo2, int hp, int attack, int defence, int spA, int spD, int speed)
+    { 
+        if(imagen.Length>0)
+        {
+            string wwwRootLocal = this.Environment.ContentRootPath + @"\wwwroot\Imagenes\" + imagen.FileName;
+            using (var stream = System.IO.File.Create(wwwRootLocal))
+            {
+                imagen.CopyToAsync(stream);
+            }
+        }
+
+        BD.ModificarPokemon(IdMiPokemon, nombre, imagen, tipo1, tipo2, hp, attack, defence, spA, spD, speed);
+        return RedirectToAction("Equipo");
+    }
+
     public IActionResult AsignarPokemon(int IdEquipo)
     {   
         ViewBag.IdEquipo = IdEquipo;

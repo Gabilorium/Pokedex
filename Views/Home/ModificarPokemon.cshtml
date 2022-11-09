@@ -1,56 +1,57 @@
 @{
-    ViewData["Title"] = "Crear Pokemon";
+    ViewData["Title"] = "Modificar Pokemon";
 }
 <div class="text-center">
-    <p class="fuente titulo">Crear Pokemón</p>
+    <p class="fuente titulo">Modificar Pokemón</p>
     <div class="login-box">
 
-        <form action='@Url.Action("GuardarPokemon", "Home")' method="Post" enctype="multipart/form-data">
+        <form action='@Url.Action("CambiarPokemon", "Home")' method="Post" enctype="multipart/form-data">
         <div class = "row">
             <div class="col-6">
                 <div class="user-box">
                     <input type="text" name="Nombre" required autocomplete="off">
-                    <label>Nombre</label>
+                    <label>Nuevo nombre</label>
                 </div>
                 <div class="user-box">
                     <input type="file" name="Imagen" required autocomplete="off">
                 </div>
                 <div class="user-box">
                     <input type="text" name="Tipo1" required autocomplete="off">
-                    <label>Tipo 1</label>
+                    <label>Nuevo tipo 1</label>
                 </div>
                 <div class="user-box">
                     <input type="text" name="Tipo2" required autocomplete="off">
-                    <label>Tipo 2</label>
+                    <label>Nuevo tipo 2</label>
                 </div>
                 <div class="user-box">
                     <input type="number" max="255" min="0" name="Hp" required autocomplete="off">
-                    <label>Vida</label>
+                    <label>Nueva vida</label>
                 </div>
             </div>
             <div class="col-6">
                 <div class="user-box">
                     <input type="number" max="255" min="0" name="Attack" required autocomplete="off">
-                    <label>Ataque</label>
+                    <label>Nuevo ataque</label>
                 </div>
                 <div class="user-box">
                     <input type="number" max="255" min="0" name="Defence" required autocomplete="off">
-                    <label>Defensa</label>
+                    <label>Nueva defensa</label>
                 </div>
                 <div class="user-box">
                     <input type="number" max="255" min="0" name="SpA" required autocomplete="off">
-                    <label>Velocidad de ataque</label>
+                    <label>Nueva velocidad de ataque</label>
                 </div>
                 <div class="user-box">
                     <input type="number" max="255" min="0" name="Spd" required autocomplete="off">
-                    <label>Velocidad de defensa</label>
+                    <label>Nueva velocidad de defensa</label>
                 </div>
                 <div class="user-box">
                     <input type="number" max="255" min="0" name="Speed" required autocomplete="off">
-                    <label>Velocidad</label>
+                    <label>Nueva velocidad</label>
                 </div>
             </div>
         </div>
+            <input class="form-control" type="hidden" name="IdMiPokemon" value="@ViewBag.IdMiPokemon">  
             <button type="submit" class="fuente2 btn btn-warning btn-lg mt-4">Guardar</button>
         </form>
     </div>
