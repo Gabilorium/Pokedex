@@ -265,3 +265,24 @@ const MostrarPokemon = (pokemon) =>{
 function IdPokemon(url) {
   return url.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/','')
 }
+
+<script>
+  function MostrarPokemon(IdP)
+  {
+    $.ajax(
+      {
+        type:'POST',
+        datatype:'JSON',
+        url:'/Home/VerDetallePokemonAjax',
+        data: {IdMiPokemon: IdP},
+        success:
+          function (response)
+          {
+            $("#NombrePokemon").html(response.Nombre);
+            $("#FotoPokemon").attr("src","/"+response.Imagen);
+            $("#Tipo1").html("Tipo 1"+response.Tipo1);
+            $("#Tipo2").html("Tipo 2"+response.Tipo2);
+          } 
+      })
+  }
+</script>
