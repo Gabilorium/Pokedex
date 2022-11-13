@@ -106,7 +106,8 @@ const fetchDataMove = async (idMov) => {
     const datamov = await mov.json()
     const movimiento ={
       Nombre: datamov.name,
-      Tipo: datamov.damage_class.name,
+      Tipo: datamov.type.name,
+      Clase: datamov.damage_class.name,
       Daño: datamov.power
     }
     console.log(datamov)
@@ -162,7 +163,6 @@ function Pokemones(pokemon) {
     //fetchData(IdPokemon(pokemon.url))
     // NO SE PORQUE PERO QUEDA HORRIBLE
     $("#containerr").append('<a href="DatosPokemon?Idpokemon=' + IdPoke + '" class="noUnderLine" target="blank"> <div class="card" type="button"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+IdPoke+'.png"/><span>Nº.'+IdPoke+'</span><h2>' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)+'</h2></card></a>')
-    //$("#containerr").append('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+IdPoke+'.png"/>')
     /*$("#containerr").append('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/'+IdPoke+'.svg"/>')
     $("#containerr").append('<h2>' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)+'</h2>')
     $("#containerr").append('</card>')
@@ -202,6 +202,7 @@ const MostrarMovimiento = (movimiento) =>{
   <tr>
       <th scope="row">${ movimiento.Nombre }</th>
       <td>${ movimiento.Tipo }</td>
+      <td>${ movimiento.Clase }</td>
       <td>${ movimiento.Daño }</td>
   </tr>
   `
@@ -213,7 +214,7 @@ const MostrarPokemon = (pokemon) =>{
   datos.innerHTML = `
   ${datos.innerHTML}
   <h1 class="text-center">${pokemon.nombre}</h1>
-  <div class=text-center>
+  <div class="text-center">
   <img src="${pokemon.img}">
   <div>
   <table>
@@ -369,25 +370,3 @@ const MostrarPokemon = (pokemon) =>{
 </table>
 `;
 }
-
-
-<script>
-  function MostrarPokemon(IdP)
-  {
-    $.ajax(
-      {
-        type:'POST',
-        datatype:'JSON',
-        url:'/Home/VerDetallePokemonAjax',
-        data: {IdMiPokemon: IdP},
-        success:
-          function (response)
-          {
-            $("#NombrePokemon").html(response.Nombre);
-            $("#FotoPokemon").attr("src","/"+response.Imagen);
-            $("#Tipo1").html("Tipo 1"+response.Tipo1);
-            $("#Tipo2").html("Tipo 2"+response.Tipo2);
-          } 
-      })
-  }
-</script>

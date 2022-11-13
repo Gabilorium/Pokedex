@@ -464,3 +464,10 @@ button:hover{
   border: 1px solid #A13959; 
   height:20px;
 }
+
+.Scroll-Table{
+  text-align: center !important;
+  overflow-y:scroll;
+  height:500px;
+  width:100%;
+}
