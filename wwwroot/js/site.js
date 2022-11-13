@@ -99,6 +99,23 @@ function GetDatta(){
 
 
 //Conceguir la datta de 1 solo pokemon
+const fetchDataMove = async (idMov) => {
+  try{
+    //console.log(idMov)
+    const mov = await fetch(`https://pokeapi.co/api/v2/move/${idMov}`);
+    const datamov = await mov.json()
+    const movimiento ={
+      Nombre: datamov.name,
+      Tipo: datamov.damage_class.name,
+      Daño: datamov.power
+    }
+    console.log(datamov)
+    MostrarMovimiento(movimiento)
+  }catch(error){
+    console.log(error)
+  }
+}
+
 const fetchData = async (id) => {
   try{
     console.log(id)
@@ -107,6 +124,9 @@ const fetchData = async (id) => {
     const pokemon = {
       img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
       imgJuego: data.sprites.front_default,
+      imgJuegoEspalda: data.sprites.back_default,
+      imgJuegoShiny: data.sprites.front_shiny,
+      imgJuegoEspaldaShiny: data.sprites.back_shiny,
       imgCvg: data.sprites.other.dream_world.front_default,
       nombre: data.name,
       experiencia: data.base_experience,
@@ -116,8 +136,8 @@ const fetchData = async (id) => {
       Spa: data.stats[3].base_stat,
       Spd: data.stats[4].base_stat,
       Speed: data.stats[5].base_stat,
-      Tipo1: data.types[0].type.name,
-      //Tipo2: data.types[1].type.name
+      Tipo: data.types,
+      Movimientos: data.moves
     };
     console.log(data)
     MostrarPokemon(pokemon)
@@ -133,15 +153,14 @@ function Pokemones(pokemon) {
   pokemon.forEach(pokemon => {
     IdPoke = IdPokemon(pokemon.url);
     //fetchData(IdPokemon(pokemon.url))
-    /* NO SE PORQUE PERO QUEDA HORRIBLE
-    $("#containerr").append('<a href="DatosPokemon?Idpokemon=' + IdPoke + '" class="noUnderLine" target="_blank">')
-    $("#containerr").append('<div class="card" type="button">')
+    // NO SE PORQUE PERO QUEDA HORRIBLE
+    $("#containerr").append('<a href="DatosPokemon?Idpokemon=' + IdPoke + '" class="noUnderLine" target="blank"> <div class="card" type="button"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+IdPoke+'.png"/><span>Nº.'+IdPoke+'</span><h2>' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)+'</h2></card></a>')
     //$("#containerr").append('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+IdPoke+'.png"/>')
-    $("#containerr").append('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/'+IdPoke+'.svg"/>')
+    /*$("#containerr").append('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/'+IdPoke+'.svg"/>')
     $("#containerr").append('<h2>' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)+'</h2>')
     $("#containerr").append('</card>')
     $("#containerr").append('</a>')*/
-    container.innerHTML = `
+    /*container.innerHTML = `
     ${container.innerHTML}
     <a href="DatosPokemon?Idpokemon=` + IdPoke + `"  class="noUnderLine" target="_blank">
     <div class="card" type="button">
@@ -151,23 +170,123 @@ function Pokemones(pokemon) {
     <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
     </card>
     </a>
-  `;
+  `;*/
   });
 }
 
-
+// En esta ruta de la API no nos viene el id de cada pokemon, pero si que nos viene
+// una URL, para poder obtener todos los datos de ese pokemon, la cual contiene su ID
+// así que le extraigo el ID a la URL
+function IdPokemon(url) {
+  return url.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/','')
+}
+function IdMovimiento(url) {
+  return url.replace('https://pokeapi.co/api/v2/move/', '').replace('/','')
+}
 function getPokemon(IdPokemon) {
   fetchData(IdPokemon);
 }
+
+const MostrarMovimiento = (movimiento) =>{
+  //console.log(movimiento)
+  console.log(movimiento.Daño)
+  var contenido = document.querySelector('#contenido')
+  contenido.innerHTML += `
+  <tr>
+      <th scope="row">${ movimiento.Nombre }</th>
+      <td>${ movimiento.Tipo }</td>
+      <td>${ movimiento.Daño }</td>
+  </tr>
+  `
+}
+
 const MostrarPokemon = (pokemon) =>{
   console.log(pokemon)
-  const container = document.getElementById('datos')
-  container.innerHTML = `
-  ${container.innerHTML}
+  const datos = document.querySelector('#datos')
+  datos.innerHTML = `
+  ${datos.innerHTML}
   <h1 class="text-center">${pokemon.nombre}</h1>
-  <img src="${pokemon.imgJuego}">
+  <div class=text-center>
   <img src="${pokemon.img}">
-  <h1>${pokemon.Tipo1}</h1>
+  <div>
+  <table>
+  <tbody>
+  <tr>
+    <th colspan="2">
+    Frontal
+    </th>
+  </tr>
+  <tr>
+  <td colspan="1">
+  <a href="https://static.wikia.nocookie.net/espokemon/images/4/4f/Garchomp_HOME.png/revision/latest?cb=20221101170930" class="image" title="Garchomp">
+  <img src="${pokemon.imgJuego}">
+  </a>
+  </td>
+    <td colspan="1">
+    <a href="https://static.wikia.nocookie.net/espokemon/images/4/4f/Garchomp_HOME.png/revision/latest?cb=20221101170930" class="image" title="Garchomp">
+    <img src="${pokemon.imgJuegoEspalda}">
+    </a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="1">
+      Frente
+    </td>
+    <td colspan="1">
+      Espalda
+    </td>
+  </tr>
+  <tr>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  <table>
+  <tbody>
+  <tr>
+    <th colspan="2">
+    Frontal
+    </th>
+  </tr>
+  <tr>
+  <td colspan="1">
+  <a href="https://static.wikia.nocookie.net/espokemon/images/4/4f/Garchomp_HOME.png/revision/latest?cb=20221101170930" class="image" title="Garchomp">
+  <img src="${pokemon.imgJuegoShiny}">
+  </a>
+  </td>
+    <td colspan="1">
+    <a href="https://static.wikia.nocookie.net/espokemon/images/4/4f/Garchomp_HOME.png/revision/latest?cb=20221101170930" class="image" title="Garchomp">
+    <img src="${pokemon.imgJuegoEspaldaShiny}">
+    </a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="1">
+      Frente
+    </td>
+    <td colspan="1">
+      Espalda
+    </td>
+  </tr>
+  <tr>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  <p>Pokemon In game<p>
+  <img src="${pokemon.imgJuego}">
+  <img src="${pokemon.imgJuegoShiny}">
+  </div>`
+  pokemon.Tipo.forEach(tipo => {
+      datos.innerHTML += `
+      <h1>${tipo.type.name}</h1>
+      `
+  });
+  pokemon.Movimientos.forEach(tipo => {
+    idmov = IdMovimiento(tipo.move.url)
+    fetchDataMove(idmov)
+  });
+  datos.innerHTML +=`
   <table class="tabla-estadisticas">
     <tbody>
       <tr>
@@ -244,9 +363,3 @@ const MostrarPokemon = (pokemon) =>{
 `;
 }
 
-// En esta ruta de la API no nos viene el id de cada pokemon, pero si que nos viene
-// una URL, para poder obtener todos los datos de ese pokemon, la cual contiene su ID
-// así que le extraigo el ID a la URL
-function IdPokemon(url) {
-  return url.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/','')
-}

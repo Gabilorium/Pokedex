@@ -9,8 +9,35 @@
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
     <div id="datos">
-    </div>
 
+    </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Potencia</th>
+                </tr>
+            <thead>
+            <tbody id="contenido" class="">
+            </tbody>
+        </table>
 <script>
     getPokemon(@ViewBag.IdPokemon);
+
+
+function tabla(datos) {
+    // console.log(datos)
+    contenido.innerHTML = ''
+    for(let valor of datos){
+        // console.log(valor.nombre)
+        contenido.innerHTML += `
+        
+        <tr>
+            <th scope="row">${ valor.id }</th>
+        </tr>
+        
+        `
+    }
+}
 </script>

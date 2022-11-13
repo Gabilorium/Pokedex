@@ -386,9 +386,9 @@ button:hover{
 #datos{
   position: relative;
 }
-#datos img{
+/*#datos img{
   margin-left: 25%;
-}
+}*/
 /*---------------------Tabla Estadisticas-----------------------------*/
 .tabla-estadisticas{
   background: #7038F8;
