@@ -161,6 +161,11 @@ public class HomeController : Controller
         return View();
     }
 
+    /*public MiPokemon VerDetallePokemonAjax(int id)
+    {
+        //ViewBag.Pokemon=
+    }*/
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

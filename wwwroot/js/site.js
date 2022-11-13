@@ -121,6 +121,13 @@ const fetchData = async (id) => {
     console.log(id)
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await res.json()
+    data.types.forEach(type => {
+      tipo = type.type.name;
+      console.log(tipo)
+      var i = 0;
+      i = i+1;
+      console.log(data.types.length)
+    })
     const pokemon = {
       img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
       imgJuego: data.sprites.front_default,
@@ -363,3 +370,24 @@ const MostrarPokemon = (pokemon) =>{
 `;
 }
 
+
+<script>
+  function MostrarPokemon(IdP)
+  {
+    $.ajax(
+      {
+        type:'POST',
+        datatype:'JSON',
+        url:'/Home/VerDetallePokemonAjax',
+        data: {IdMiPokemon: IdP},
+        success:
+          function (response)
+          {
+            $("#NombrePokemon").html(response.Nombre);
+            $("#FotoPokemon").attr("src","/"+response.Imagen);
+            $("#Tipo1").html("Tipo 1"+response.Tipo1);
+            $("#Tipo2").html("Tipo 2"+response.Tipo2);
+          } 
+      })
+  }
+</script>

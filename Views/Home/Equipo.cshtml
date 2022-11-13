@@ -35,7 +35,8 @@
                             <td class="fuente2">@item.IdEquipo</td>
                             <td class="fuente2">@item.NombreEquipo</td>
                             <td class="fuente2">@item.FechaCreacion</td>
-                            <td><a href='@Url.Action("PokemonesDelEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Pokemones</a></td>
+                            <td><a href='@Url.Action("PokemonesDelEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2" >Pokemones</a></td>
+                            //<td><a href='@Url.Action("PokemonesDelEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2" data-toggle="modal" data-target="#modalPokemon" onclick="MostrarPokemon(@item.IdEquipo)">Pokemones</a></td>
                             <td><a href='@Url.Action("AsignarPokemon","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Asignar</a></td>
                             <td><a href='@Url.Action("ModificarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Modificar</a></td>
                             <td><a href='@Url.Action("EliminarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-danger fuente2">Eliminar</a></td>
@@ -86,14 +87,15 @@
                             <td class="fuente2">@item.IdMiPokemon</td>
                             <td class="fuente2">@item.Nombre</td>
                             <td><img class="imgSize" src="/Imagenes/@item.Imagen"></td>
-                            <td class="fuente2">@item.Tipo1</td>
+                            /*<td class="fuente2">@item.Tipo1</td>
                             <td class="fuente2">@item.Tipo2</td>
                             <td class="fuente2">@item.Hp</td>
                             <td class="fuente2">@item.Attack</td>
                             <td class="fuente2">@item.Defence</td>
                             <td class="fuente2">@item.SpA</td>
                             <td class="fuente2">@item.SpD</td>
-                            <td class="fuente2">@item.Speed</td>
+                            <td class="fuente2">@item.Speed</td>*/
+                            <td><button type="button" class="btn btn-warning fuente2" data-toggle="modal" data-target="#modalPokemon" onclick="MostrarPokemon(@item.IdMiPokemon)">Pokemones</button></td>
                             <td><a href='@Url.Action("EliminarPokemon","Home", new{IdMiPokemon=item.IdMiPokemon})' class="btn btn-danger fuente2">Eliminar</a></td>
                         </tr>
                     }
@@ -107,6 +109,27 @@
             <a href='@Url.Action("CrearPokemon","Home")' class="negro fuente btn btn-warning btn-lg">Agregar un Pokemon</a>
         </div>
     </div>
- 
+</div>
 
+<!--Modal 1-->
+
+<div class="modal fade" id="ModalPokemon" tabindex="-1" aria-labelledbye="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="NombrePokemon"> Nombre </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img class="img-fluid" id ="FotoPokemon">
+                <div id="Tipo1"></div>
+                <div id="Tipo2"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
 </div>
