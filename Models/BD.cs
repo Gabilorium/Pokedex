@@ -131,6 +131,17 @@ namespace Pokedex.Models{
             return listaPok;
         }
 
+        public static int EquipoConPokemones(int IdEquipo)
+        {
+            int id;
+            using(SqlConnection db = new SqlConnection(_conectionString))
+            {
+                string SQL = "SELECT IdPokemonxEquipo FROM PokemonxEquipo WHERE IdEquipo = @pIdEquipo";
+                id = db.QueryFirstOrDefault<int>(SQL, new {pIdEquipo = IdEquipo});
+            }
+            return id;
+        }
+
          public static MiPokemon ObtenerMiPokemonPorId(int IdMiPokemon)
         {
             MiPokemon pok = new MiPokemon();

@@ -370,3 +370,22 @@ const MostrarPokemon = (pokemon) =>{
 </table>
 `;
 }
+
+function VerMasInfoPokemon(IdP)
+  {
+    $.ajax(
+      {
+        type:'POST',
+        datatype:'JSON',
+        url:'/Home/VerDetallePokemonAjax',
+        data: {IdMiPokemon: IdP},
+        success:
+          function (response)
+          {
+            $("#NombrePokemon").html(response.Nombre);
+            $("#FotoPokemon").attr("src"+"/"+response.Imagen);
+            $("#Tipo1").html("Tipo 1"+response.Tipo1);
+            $("#Tipo2").html("Tipo 2"+response.Tipo2);
+          } 
+      });
+  }

@@ -158,6 +158,8 @@ public class HomeController : Controller
     public IActionResult PokemonesDelEquipo(int IdEquipo)
     {   
         ViewBag.InfoPokemones = BD.TraerPokemonesDelEquipo(IdEquipo);
+        ViewBag.Vacio = BD.EquipoConPokemones(IdEquipo);
+
         return View();
     }
 
