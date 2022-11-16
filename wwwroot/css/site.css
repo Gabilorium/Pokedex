@@ -465,6 +465,150 @@ button:hover{
   height:20px;
 }
 
+.normal{
+  background: #A8A878;
+  border: 3px solid #6D6D4E;
+}
+.normal-Claro{
+  background: #C6C6A7;
+}
+
+.lucha{
+  background: #C03028;
+  border: 3px solid #7D1F1A;
+}
+.lucha-Claro{
+  background: #D67873;
+}
+
+.volador{
+  background: #A890F0;
+  border: 3px solid #6D5E9C;
+}
+.volador-Claro{
+  background: #C6B7F5;
+}
+
+.tierra{
+  background: #E0C068;
+  border: 3px solid #927D44;
+}
+.tierra-Claro{
+  background: #EBD69D;
+}
+
+.bicho{
+  background: #A8B820;
+  border: 3px solid #6D7815;
+}
+.bicho-Claro{
+  background: #C6D16E;
+}
+
+.fantasma{
+  background: #705898;
+  border: 3px solid #682A68;
+}
+.fantasma-Claro{
+  background: #A292BC;
+}
+
+.acero{
+  background: #B8B8D0;
+  border: 3px solid #787887;
+}
+.acero-Claro{
+  background: #D1D1E0;
+}
+
+.veneno{
+  background: #A040A0;
+  border: 3px solid #682A68;
+}
+.veneno-Claro{
+  background: #C183C1;
+}
+
+.electrico{
+  background: #F8D030;
+  border: 3px solid #A1871F;
+}
+.electrico-Claro{
+  background: #FAE078;
+}
+
+.planta{
+  background: #78C850;
+  border: 3px solid #4E8234;
+}
+.planta-Claro{
+  background: #A7DB8D;
+}
+
+.fuego{
+  background: #F08030;
+  border: 3px solid #9C531F;
+}
+.fuego-Claro{
+  background: #F5AC78;
+}
+
+.agua{
+  background: #6890F0;
+  border: 3px solid #445E9C;
+}
+.agua-Claro{
+  background: #9DB7F5;
+}
+
+.siniestro{
+  background: #705848;
+  border: 3px solid #49392F;
+}
+.siniestro-Claro{
+  background: #A29288;
+}
+
+.hielo{
+  background: #98D8D8;
+  border: 3px solid #B8B8D0;
+}
+.hielo-Claro{
+  background: #BCE6E6;
+}
+
+.hada{
+  background: #EE99AC;
+  border: 3px solid #9B6470;
+}
+.hada-Claro{
+  background: #F4BDC9;
+}
+
+.dragon{
+  background: #7038F8;
+  border: 3px solid #4924A1;
+}
+.dragon-Claro{
+  background: #A27DFA;
+}
+
+.roca{
+  background: #B8A038 ;
+  border: 3px solid #786824;
+}
+.roca.Claro{
+  background: #D1C17D;
+}
+
+.psiquico{
+  background: #F85888  ;
+  border: 3px solid #A13959;
+}
+.psiquico-Claro{
+  background: #FA92B2;
+}
+
 .Scroll-Table{
   text-align: center !important;
   overflow-y:scroll;

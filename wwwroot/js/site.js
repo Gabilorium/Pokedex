@@ -110,7 +110,7 @@ const fetchDataMove = async (idMov) => {
       Clase: datamov.damage_class.name,
       Daño: datamov.power
     }
-    console.log(datamov)
+    //console.log(datamov)
     MostrarMovimiento(movimiento)
   }catch(error){
     console.log(error)
@@ -144,6 +144,7 @@ const fetchData = async (id) => {
       Spa: data.stats[3].base_stat,
       Spd: data.stats[4].base_stat,
       Speed: data.stats[5].base_stat,
+      TipoPrinc: data.types[0].type.name,
       Tipo: data.types,
       Movimientos: data.moves
     };
@@ -195,8 +196,6 @@ function getPokemon(IdPokemon) {
 }
 
 const MostrarMovimiento = (movimiento) =>{
-  //console.log(movimiento)
-  console.log(movimiento.Daño)
   var contenido = document.querySelector('#contenido')
   contenido.innerHTML += `
   <tr>
@@ -295,10 +294,10 @@ const MostrarPokemon = (pokemon) =>{
     fetchDataMove(idmov)
   });
   datos.innerHTML +=`
-  <table id="tabla-estadisticas" class="">
+  <table id="tabla-estadisticas" class="tabla-estadisticas">
     <tbody>
       <tr>
-        <th colspan="2" rowspan="2" class="text-center titulo-tabla">
+        <th colspan="2" rowspan="2" class="text-center titulo-tabla ">
           Stats
         </th>
       </tr>
@@ -369,6 +368,66 @@ const MostrarPokemon = (pokemon) =>{
   </tbody>
 </table>
 `;
+switch(TipoPrinc)
+{
+  case "grass":
+    break;
+
+  case "fire":
+    break;
+  case "water":
+    break;
+
+  case "grass":
+    break;
+
+  case "flying":
+    break;
+
+  case "poison":
+    break;
+
+  case "grass":
+    break;
+
+  case "grass":
+    break;
+
+  case "grass":
+    break;
+
+  case "fire":
+    break;
+
+  case "grass":
+  break;
+
+  case "grass":
+    break;
+  case "grass":
+    break;
+
+  case "grass":
+    break;
+
+  case "grass":
+    break;
+
+  case "grass":
+    break;
+
+  case "grass":
+    break;
+
+  case "grass":
+    break;
+
+  case "grass":
+    break;
+    
+  case "fire":
+    break;
+}
 }
 
 function VerMasInfoPokemon(IdP)
