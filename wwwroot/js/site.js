@@ -192,13 +192,13 @@ function getPokemon(IdPokemon) {
 }
 
 const MostrarMovimiento = (movimiento) =>{
-  var contenido = document.querySelector('#contenido')
-  contenido.innerHTML += `
+  var contenido_nivel = document.querySelector('#contenido_nivel')
+  contenido_nivel.innerHTML += `
   <tr>
-      <th scope="row">${ movimiento.Nombre.charAt(0).toUpperCase() + movimiento.Nombre.slice(1)}</th>
-      <td>${ movimiento.Tipo.charAt(0).toUpperCase() + movimiento.Tipo.slice(1)}</td>
-      <td>${ movimiento.Clase.charAt(0).toUpperCase() + movimiento.Clase.slice(1)}</td>
-      <td>${ movimiento.Daño}</td>
+      <th class"text-white" scope="row">${ movimiento.Nombre.charAt(0).toUpperCase() + movimiento.Nombre.slice(1)}</th>
+      <td class"text-white">${ movimiento.Tipo.charAt(0).toUpperCase() + movimiento.Tipo.slice(1)}</td>
+      <td class"text-white">${ movimiento.Clase.charAt(0).toUpperCase() + movimiento.Clase.slice(1)}</td>
+      <td class"text-white">${ movimiento.Daño}</td>
   </tr>
   `
 }
@@ -208,12 +208,12 @@ const MostrarPokemon = (pokemon) =>{
   const datos = document.querySelector('#datos')
   datos.innerHTML = `
   ${datos.innerHTML}
-  <h1 class="text-center">${pokemon.nombre.charAt(0).toUpperCase() + pokemon.nombre.slice(1)}</h1>
+  <h1 class="text-center text-white">${pokemon.nombre.charAt(0).toUpperCase() + pokemon.nombre.slice(1)}</h1>
   <div class="text-center">
   <img src="${pokemon.img}">
   </div>
   <div class="centrar">
-  <table class="separar">
+  <table class="separar text-white">
   <tbody>
   <tr>
     <th colspan="2" class="text-center">
@@ -231,10 +231,10 @@ const MostrarPokemon = (pokemon) =>{
     </td>
   </tr>
   <tr>
-    <td colspan="1" class="text-center">
+    <td colspan="1" class="text-center text-white">
       Frente
     </td>
-    <td colspan="1" class="text-center">
+    <td colspan="1" class="text-center text-white">
       Espalda
     </td>
   </tr>
@@ -246,7 +246,7 @@ const MostrarPokemon = (pokemon) =>{
   <table class="text-center separar">
   <tbody>
   <tr>
-    <th colspan="2" class="text-center">
+    <th colspan="2" class="text-center text-white">
     Shiny
     </th>
   </tr>
@@ -259,10 +259,10 @@ const MostrarPokemon = (pokemon) =>{
     </td>
   </tr>
   <tr>
-    <td colspan="1" class="text-center">
+    <td colspan="1" class="text-center text-white">
       Frente
     </td>
-    <td colspan="1" class="text-center">
+    <td colspan="1" class="text-center text-white">
       Espalda
     </td>
   </tr>
@@ -272,19 +272,14 @@ const MostrarPokemon = (pokemon) =>{
   </tbody>
   </table>
   </div>
-  <div>
-  <h2> Tipos:<h2>`
+  <h2 class="text-white">Tipos:<h2>`
   pokemon.Tipo.forEach(tipo => {
       datos.innerHTML += `
-      <h4>${tipo.type.name.charAt(0).toUpperCase() + tipo.type.name.slice(1)}</h4>
+      <h4 class="text-white">${tipo.type.name.charAt(0).toUpperCase() + tipo.type.name.slice(1)}</h4>
       `
   });
-  pokemon.Movimientos.forEach(tipo => {
-    idmov = IdMovimiento(tipo.move.url)
-    fetchDataMove(idmov)
-  });
   datos.innerHTML +=`
-  </div>
+
   <table id="tabla-estadisticas" class="tabla-estadisticas">
     <tbody>
       <tr>
@@ -358,7 +353,11 @@ const MostrarPokemon = (pokemon) =>{
       </tr>
   </tbody>
 </table>
-`;
+`
+pokemon.Movimientos.forEach(tipo => {
+  idmov = IdMovimiento(tipo.move.url)
+  fetchDataMove(idmov)
+});;
 switch(pokemon.TipoPrinc)
 {
   case "grass":

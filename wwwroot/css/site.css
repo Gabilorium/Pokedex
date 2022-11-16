@@ -49,6 +49,7 @@ body {
 	margin: 0;
   margin-bottom: 60px;
   background-image: url("/Imagenes/fondo.jpg");
+
 }
 .princ {
   height: 100vh;
@@ -388,7 +389,6 @@ button:hover{
   display: flex;
   justify-content: center;
 }
-
 .separar{
   margin-left: 2%;
 }
@@ -627,10 +627,13 @@ button:hover{
   background: #FA92B2;
 }
 
+.table{
+  color: white;
+}
 .Scroll-Table{
   text-align: center !important;
   overflow-y:scroll;
-  margin-top: 15%;
+  margin-top: 1%;
   height:500px;
   width:100%;
 }
