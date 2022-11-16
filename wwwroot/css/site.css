@@ -48,6 +48,7 @@ body {
   font-family: 'Ubuntu', sans-serif;
 	margin: 0;
   margin-bottom: 60px;
+  background-image: url("/Imagenes/fondo.jpg");
 }
 .princ {
   height: 100vh;
@@ -183,14 +184,13 @@ body {
 .titulo{
   margin-bottom: 8%;
   font-size: 5rem;
-	color:rgb(255,205,0) ;
-  -webkit-text-stroke: rgb(53,106,188) 7.8px;
+	color:rgb(255, 255, 255);
+  
 }
 .subtitulo{
   margin-bottom: 4%;
   font-size: 3rem;
-	color:rgb(255,205,0) ;
-  -webkit-text-stroke: rgb(53,106,188) 4px;
+	color:rgb(255, 255, 255);
 }
 .fondoAzul{
   background-color:rgb(53,106,188);
@@ -269,7 +269,7 @@ button:hover{
   padding: 3%;
   margin-top: 5%;
   transform: translate(-50%, -50%);
-  background: rgb(53,106,188);
+  background: rgb(132,132,132);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
@@ -312,7 +312,7 @@ button:hover{
 .login-box .user-box input:valid ~ label {
   top: -20px;
   left: 0;
-  color: rgb(255,205,0);
+  color: rgb(255,255,255);
   font-size: 12px;
 }
 
@@ -320,7 +320,7 @@ button:hover{
   position: relative;
   display: inline-block;
   padding: 10px 20px;
-  color: rgb(255,205,0);
+  color: rgb(255,255,255);
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
@@ -331,13 +331,13 @@ button:hover{
 }
 
 .login-box a:hover {
-  background: rgb(255,205,0);
-  color: rgb(255,205,0);
+  background: rgb(255,255,255);
+  color: rgb(255,255,255);
   border-radius: 5px;
-  box-shadow: 0 0 5px rgb(255,205,0),
-              0 0 25px rgb(255,205,0),
-              0 0 50px rgb(255,205,0),
-              0 0 100px rgb(255,205,0);
+  box-shadow: 0 0 5px rgb(255,255,255),
+              0 0 25px rgb(255,255,255),
+              0 0 50px rgb(255,255,255),
+              0 0 100px rgb(255,255,255);
 }
 
 .login-box a span {
@@ -350,7 +350,7 @@ button:hover{
   left: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgb(255,205,0));
+  background: linear-gradient(90deg, transparent, rgb(255,255,255));
   animation: btn-anim1 1s linear infinite;
 }
 
@@ -359,7 +359,7 @@ button:hover{
   right: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, rgb(255,205,0));
+  background: linear-gradient(180deg, transparent, rgb(255, 255, 255));
   animation: btn-anim2 1s linear infinite;
   animation-delay: .25s
 }
@@ -369,7 +369,7 @@ button:hover{
   right: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(270deg, transparent, rgb(255,205,0));
+  background: linear-gradient(270deg, transparent, rgb(255, 255, 255));
   animation: btn-anim3 1s linear infinite;
   animation-delay: .5s
 }
@@ -616,4 +616,16 @@ button:hover{
   overflow-y:scroll;
   height:500px;
   width:100%;
+}
+
+.fondoRojo{
+  background-color:#C04C4B;
+}
+
+.fondoGris{
+  background-color:#E7E7E6;
+}
+
+.fondoGrisOscuro{
+  background-color:rgb(133, 133, 133);
 }

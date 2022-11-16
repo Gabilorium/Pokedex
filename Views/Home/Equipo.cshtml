@@ -5,6 +5,7 @@
     <div class="row mb-4">
         <p class="fuente titulo">Equipos y Pokemon</p>
     </div>
+</div>
 
     <div class="row mb-4">
         <p class="fuente subtitulo">Equipos:</p>
@@ -14,7 +15,7 @@
 
     <div class="row">
 
-        <div class="col-12 fondoAzul">
+        <div class="col-12 fondoGris">
             <table class="table">
                 <thead>
                     <tr>
@@ -35,10 +36,10 @@
                             <td class="fuente2">@item.IdEquipo</td>
                             <td class="fuente2">@item.NombreEquipo</td>
                             <td class="fuente2">@item.FechaCreacion</td>
-                            <td><a href='@Url.Action("PokemonesDelEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2" >Pokemones</a></td>
+                            <td><a href='@Url.Action("PokemonesDelEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-secondary fuente2" >Pokemones</a></td>
                             <!--<td><a href='@Url.Action("PokemonesDelEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2" data-toggle="modal" data-target="#modalPokemon" onclick="MostrarPokemon(@item.IdEquipo)">Pokemones</a></td>-->
-                            <td><a href='@Url.Action("AsignarPokemon","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Asignar</a></td>
-                            <td><a href='@Url.Action("ModificarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-warning fuente2">Modificar</a></td>
+                            <td><a href='@Url.Action("AsignarPokemon","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-secondary fuente2">Asignar</a></td>
+                            <td><a href='@Url.Action("ModificarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-secondary fuente2">Modificar</a></td>
                             <td><a href='@Url.Action("EliminarEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-danger fuente2">Eliminar</a></td>
                         </tr>
                     }
@@ -49,7 +50,7 @@
 
     <div class="row mt-3 mb-5">
         <div class="text-center">
-            <a href='@Url.Action("CrearEquipo","Home")' class="fuente btn btn-warning btn-lg">Agregar un Equipo</a>
+            <a href='@Url.Action("CrearEquipo","Home")' class="fuente2 btn btn-secondary btn-lg">Agregar un Equipo</a>
         </div>
     </div>
 
@@ -60,22 +61,14 @@
 
     <div class="row">
 
-        <div class="col-12 fondoAzul">
+        <div class="col-12 fondoGris">
             <table class="table">
                 <thead>
                     <tr>
                         <th class="fuente2">Id</th>
                         <th class="fuente2">Nombre</th>
                         <th class="fuente2">Imagen</th>
-                        <!--<th class="fuente2">Tipo 1</th>
-                        <th class="fuente2">Tipo 2</th>
-                        <th class="fuente2">Vida</th>
-                        <th class="fuente2">Ataque</th>
-                        <th class="fuente2">Defensa</th>
-                        <th class="fuente2">Velocidad de ataque</th>
-                        <th class="fuente2">Velocidad de defensa</th>
-                        <th class="fuente2">Velocidad</th>-->
-                        <th class="fuente2">Ver más Info</th>
+                        <th class="fuente2">Ver más</th>
                         <th class="fuente2">Modificar Pokemón</th>
                         <th class="fuente2">Eliminar Pokemón</th>
                     </tr>
@@ -88,16 +81,8 @@
                             <td class="fuente2">@item.IdMiPokemon</td>
                             <td class="fuente2">@item.Nombre</td>
                             <td><img class="imgSize" src="/Imagenes/@item.Imagen"></td>
-                            <!--<td class="fuente2">@item.Tipo1</td>
-                            <td class="fuente2">@item.Tipo2</td>
-                            <td class="fuente2">@item.Hp</td>
-                            <td class="fuente2">@item.Attack</td>
-                            <td class="fuente2">@item.Defence</td>
-                            <td class="fuente2">@item.SpA</td>
-                            <td class="fuente2">@item.SpD</td>
-                            <td class="fuente2">@item.Speed</td>-->
-                            <td><button type="button" class="btn btn-warning fuente2" data-toggle="modal" data-target="#ModalPokemon" onclick="VerMasInfoPokemon(@item.IdMiPokemon)">Info</button></td>
-                            <td><a href='@Url.Action("ModificarPokemon","Home", new{IdMiPokemon=item.IdMiPokemon})' class="btn btn-warning fuente2">Modificar</a></td>
+                            <td><button type="button" class="btn btn-secondary fuente2" data-toggle="modal" data-target="#ModalPokemon" onclick="VerMasInfoPokemon(@item.IdMiPokemon)">Información</button></td>
+                            <td><a href='@Url.Action("ModificarPokemon","Home", new{IdMiPokemon=item.IdMiPokemon})' class="btn btn-secondary fuente2">Modificar</a></td>
                             <td><a href='@Url.Action("EliminarPokemon","Home", new{IdMiPokemon=item.IdMiPokemon})' class="btn btn-danger fuente2">Eliminar</a></td>
                         </tr>
                     }
@@ -108,7 +93,7 @@
 
     <div class="row mt-3 mb-5">
         <div class="text-center">
-            <a href='@Url.Action("CrearPokemon","Home")' class="negro fuente btn btn-warning btn-lg">Agregar un Pokemon</a>
+            <a href='@Url.Action("CrearPokemon","Home")' class="fuente2 btn btn-secondary btn-lg">Agregar un Pokemon</a>
         </div>
     </div>
 </div>
@@ -120,7 +105,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title" id="NombrePokemon"></div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button id="cross" type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -136,8 +121,9 @@
                 <div id="Speed"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger" id="cerrar" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
-</div>
+
+

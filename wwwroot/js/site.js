@@ -456,3 +456,26 @@ function VerMasInfoPokemon(IdP)
           } 
       });
   }
+
+
+  var modal = document.getElementById("ModalPokemon");
+
+  var btn = document.getElementById("btn1");
+
+  var btnClose = document.getElementsByClassName("cerrar");
+
+
+  btn.onclick = function(){
+    modal.style.display = "block";
+  }
+
+  btnClose.onclick = function(){
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event){
+    if (event.target==modal)
+    {
+      id.style.display = "none";
+    }
+  }
