@@ -384,7 +384,14 @@ button:hover{
   animation: btn-anim4 1s linear infinite;
   animation-delay: .75s
 }*/
+.centrar{
+  display: flex;
+  justify-content: center;
+}
 
+.separar{
+  margin-left: 2%;
+}
 #datos{
   position: relative;
 }
@@ -393,11 +400,20 @@ button:hover{
 }*/
 /*---------------------Tabla Estadisticas-----------------------------*/
 .tabla-estadisticas{
-  background: #7038F8;
-  border-radius: 10px;
-  border: 3px solid #A890F0;
   white-space:nowrap;
   border-collapse: separate !important;
+  position: relative;
+  border-collapse: collapse; 
+  border-radius: 5%;
+}
+.negro{
+  background: black !important;
+}
+.th {
+  background: white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
 }
 .titulo-tabla{
   background: #A27DFA; 
@@ -614,6 +630,7 @@ button:hover{
 .Scroll-Table{
   text-align: center !important;
   overflow-y:scroll;
+  margin-top: 15%;
   height:500px;
   width:100%;
 }
