@@ -114,18 +114,18 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult CambiarPokemon(int IdMiPokemon, string nombre, IFormFile imagen, string tipo1, string tipo2, int hp, int attack, int defence, int spA, int spD, int speed)
+    public IActionResult CambiarPokemon(int IdMiPokemon, string Nombre, IFormFile Imagen, string Tipo1, string Tipo2, int Hp, int Attack, int Defence, int SpA, int SpD, int Speed)
     { 
-        if(imagen.Length>0)
+        if(Imagen.Length>0)
         {
-            string wwwRootLocal = this.Environment.ContentRootPath + @"\wwwroot\Imagenes\" + imagen.FileName;
+            string wwwRootLocal = this.Environment.ContentRootPath + @"\wwwroot\Imagenes\" + Imagen.FileName;
             using (var stream = System.IO.File.Create(wwwRootLocal))
             {
-                imagen.CopyToAsync(stream);
+                Imagen.CopyToAsync(stream);
             }
         }
 
-        BD.ModificarPokemon(IdMiPokemon, nombre, imagen, tipo1, tipo2, hp, attack, defence, spA, spD, speed);
+        BD.ModificarPokemon(IdMiPokemon, Nombre, Imagen, Tipo1, Tipo2, Hp, Attack, Defence, SpA, SpD, Speed);
         return RedirectToAction("Equipo");
     }
 
@@ -163,10 +163,11 @@ public class HomeController : Controller
         return View();
     }
 
-    /*public MiPokemon VerDetallePokemonAjax(int id)
+    public MiPokemon VerMasInfoPokemon(int IdMiPokemon)
     {
-        //ViewBag.Pokemon=
-    }*/
+        MiPokemon pokemon = BD.ObtenerMiPokemonPorId(IdMiPokemon);
+        return pokemon;
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

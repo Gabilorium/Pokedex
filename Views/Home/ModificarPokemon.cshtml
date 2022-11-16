@@ -6,6 +6,7 @@
     <div class="login-box">
 
         <form action='@Url.Action("CambiarPokemon", "Home")' method="Post" enctype="multipart/form-data">
+        <input class="form-control" type="hidden" name="IdMiPokemon" value="@ViewBag.IdMiPokemon"> 
         <div class = "row">
             <div class="col-6">
                 <div class="user-box">

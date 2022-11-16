@@ -75,7 +75,7 @@ namespace Pokedex.Models{
 
         public static void ModificarPokemon(int IdMiPokemon, string Nombre, IFormFile Imagen, string Tipo1, string Tipo2, int Hp, int Attack, int Defence, int SpA, int SpD, int Speed)
         {
-            string sql = "UPDATE MiPokemon Set Nombre = @pNombre, Imagen = @Imagen, Tipo1 = @pTipo1, Tipo2 = @pTipo2, Hp = @pHp, Attack = @pAttack, Defence = @pDefence, SpA = @pSpA, SpD = @pSpD, Speed = @pSpeed WHERE IdMiPokemon = @pIdMiPokemon";
+            string sql = "UPDATE MiPokemon Set Nombre = @pNombre, Imagen = @pImagen, Tipo1 = @pTipo1, Tipo2 = @pTipo2, Hp = @pHp, Attack = @pAttack, Defence = @pDefence, SpA = @pSpA, SpD = @pSpD, Speed = @pSpeed WHERE IdMiPokemon = @pIdMiPokemon";
             using(SqlConnection db = new SqlConnection(_conectionString))
             {
                 db.Execute(sql, new { pNombre = Nombre, pImagen= Imagen, pTipo1= Tipo1, pTipo2= Tipo2, pHp= Hp, pAttack= Attack, pDefence= Defence, pSpA= SpA, pSpD= SpD, pSpeed= Speed, pIdMiPokemon= IdMiPokemon});

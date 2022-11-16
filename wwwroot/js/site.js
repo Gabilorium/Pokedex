@@ -375,17 +375,25 @@ function VerMasInfoPokemon(IdP)
   {
     $.ajax(
       {
-        type:'POST',
-        datatype:'JSON',
-        url:'/Home/VerDetallePokemonAjax',
+        url:'/Home/VerMasInfoPokemon',
         data: {IdMiPokemon: IdP},
+        type:'GET',
+        datatype:'JSON',
         success:
-          function (response)
+          function (pokemon)
           {
-            $("#NombrePokemon").html(response.Nombre);
-            $("#FotoPokemon").attr("src"+"/"+response.Imagen);
-            $("#Tipo1").html("Tipo 1"+response.Tipo1);
-            $("#Tipo2").html("Tipo 2"+response.Tipo2);
+            $("#ModalPokemon").modal('show');
+            $("#NombrePokemon").html("<h2>" +pokemon.nombre+ "</h2>");
+            $("#FotoPokemon").attr("src"+"/"+pokemon.imagen);
+            $("#Tipo1").html("Tipo 1: "+pokemon.tipo1);
+            $("#Tipo2").html("Tipo 2: "+pokemon.tipo2);
+            $("#Hp").html("Vida: "+pokemon.hp);
+            $("#Attack").html("Ataque: "+pokemon.attack);
+            $("#Defence").html("Defensa: "+pokemon.defence);
+            $("#SpA").html("Velocidad ataque: "+pokemon.spA);
+            $("#SpD").html("Velocidad defensa: "+pokemon.spD);
+            $("#Speed").html("Velocidad "+pokemon.speed);
+            
           } 
       });
   }

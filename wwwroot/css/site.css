@@ -19,7 +19,9 @@
   font-family:fuente2;
   src: url('/Gotham-Black.otf') format('truetype');
 }
-
+.mostrarModal{
+  display: none;
+}
 .fuente{
   font-family: fuente;
 }
