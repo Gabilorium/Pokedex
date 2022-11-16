@@ -144,8 +144,8 @@ const fetchData = async (id) => {
       Spa: data.stats[3].base_stat,
       Spd: data.stats[4].base_stat,
       Speed: data.stats[5].base_stat,
-      TipoPrinc: data.types[0].type.name,
       Tipo: data.types,
+      TipoPrinc: data.types[0].type.name,
       Movimientos: data.moves
     };
     console.log(data)
@@ -163,11 +163,7 @@ function Pokemones(pokemon) {
     IdPoke = IdPokemon(pokemon.url);
     //fetchData(IdPokemon(pokemon.url))
     // NO SE PORQUE PERO QUEDA HORRIBLE
-    $("#containerr").append('<a href="DatosPokemon?Idpokemon=' + IdPoke + '" class="noUnderLine" target="blank"> <div class="card" type="button"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+IdPoke+'.png"/><span>Nº.'+IdPoke+'</span><h2>' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)+'</h2></card></a>')
-    /*$("#containerr").append('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/'+IdPoke+'.svg"/>')
-    $("#containerr").append('<h2>' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)+'</h2>')
-    $("#containerr").append('</card>')
-    $("#containerr").append('</a>')*/
+    $("#containerr").append('<a href="DatosPokemon?Idpokemon=' + IdPoke + '" class="noUnderLine" target="_blank"> <div class="card" type="button"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+IdPoke+'.png"/><span>Nº.'+IdPoke+'</span><h2>' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)+'</h2></card></a>')
     /*container.innerHTML = `
     ${container.innerHTML}
     <a href="DatosPokemon?Idpokemon=` + IdPoke + `"  class="noUnderLine" target="_blank">
@@ -199,10 +195,10 @@ const MostrarMovimiento = (movimiento) =>{
   var contenido = document.querySelector('#contenido')
   contenido.innerHTML += `
   <tr>
-      <th scope="row">${ movimiento.Nombre }</th>
-      <td>${ movimiento.Tipo }</td>
-      <td>${ movimiento.Clase }</td>
-      <td>${ movimiento.Daño }</td>
+      <th scope="row">${ movimiento.Nombre.charAt(0).toUpperCase() + movimiento.Nombre.slice(1)}</th>
+      <td>${ movimiento.Tipo.charAt(0).toUpperCase() + movimiento.Tipo.slice(1)}</td>
+      <td>${ movimiento.Clase.charAt(0).toUpperCase() + movimiento.Clase.slice(1)}</td>
+      <td>${ movimiento.Daño}</td>
   </tr>
   `
 }
@@ -212,34 +208,33 @@ const MostrarPokemon = (pokemon) =>{
   const datos = document.querySelector('#datos')
   datos.innerHTML = `
   ${datos.innerHTML}
-  <h1 class="text-center">${pokemon.nombre}</h1>
+  <h1 class="text-center">${pokemon.nombre.charAt(0).toUpperCase() + pokemon.nombre.slice(1)}</h1>
   <div class="text-center">
   <img src="${pokemon.img}">
-  <div>
-  <table>
+  </div>
+  <div class="centrar">
+  <table class="separar">
   <tbody>
   <tr>
-    <th colspan="2">
-    Frontal
+    <th colspan="2" class="text-center">
+    Normal
     </th>
   </tr>
   <tr>
   <td colspan="1">
-  <a href="https://static.wikia.nocookie.net/espokemon/images/4/4f/Garchomp_HOME.png/revision/latest?cb=20221101170930" class="image" title="Garchomp">
   <img src="${pokemon.imgJuego}">
-  </a>
+
   </td>
     <td colspan="1">
-    <a href="https://static.wikia.nocookie.net/espokemon/images/4/4f/Garchomp_HOME.png/revision/latest?cb=20221101170930" class="image" title="Garchomp">
     <img src="${pokemon.imgJuegoEspalda}">
-    </a>
+
     </td>
   </tr>
   <tr>
-    <td colspan="1">
+    <td colspan="1" class="text-center">
       Frente
     </td>
-    <td colspan="1">
+    <td colspan="1" class="text-center">
       Espalda
     </td>
   </tr>
@@ -248,30 +243,26 @@ const MostrarPokemon = (pokemon) =>{
   </tr>
   </tbody>
   </table>
-  <table>
+  <table class="text-center separar">
   <tbody>
   <tr>
-    <th colspan="2">
-    Frontal
+    <th colspan="2" class="text-center">
+    Shiny
     </th>
   </tr>
   <tr>
   <td colspan="1">
-  <a href="https://static.wikia.nocookie.net/espokemon/images/4/4f/Garchomp_HOME.png/revision/latest?cb=20221101170930" class="image" title="Garchomp">
-  <img src="${pokemon.imgJuegoShiny}">
-  </a>
+   <img src="${pokemon.imgJuegoShiny}">
   </td>
     <td colspan="1">
-    <a href="https://static.wikia.nocookie.net/espokemon/images/4/4f/Garchomp_HOME.png/revision/latest?cb=20221101170930" class="image" title="Garchomp">
-    <img src="${pokemon.imgJuegoEspaldaShiny}">
-    </a>
+     <img src="${pokemon.imgJuegoEspaldaShiny}">
     </td>
   </tr>
   <tr>
-    <td colspan="1">
+    <td colspan="1" class="text-center">
       Frente
     </td>
-    <td colspan="1">
+    <td colspan="1" class="text-center">
       Espalda
     </td>
   </tr>
@@ -280,13 +271,12 @@ const MostrarPokemon = (pokemon) =>{
   </tr>
   </tbody>
   </table>
-  <p>Pokemon In game<p>
-  <img src="${pokemon.imgJuego}">
-  <img src="${pokemon.imgJuegoShiny}">
-  </div>`
+  </div>
+  <div>
+  <h2> Tipos:<h2>`
   pokemon.Tipo.forEach(tipo => {
       datos.innerHTML += `
-      <h1>${tipo.type.name}</h1>
+      <h4>${tipo.type.name.charAt(0).toUpperCase() + tipo.type.name.slice(1)}</h4>
       `
   });
   pokemon.Movimientos.forEach(tipo => {
@@ -294,10 +284,11 @@ const MostrarPokemon = (pokemon) =>{
     fetchDataMove(idmov)
   });
   datos.innerHTML +=`
+  </div>
   <table id="tabla-estadisticas" class="tabla-estadisticas">
     <tbody>
       <tr>
-        <th colspan="2" rowspan="2" class="text-center titulo-tabla ">
+        <th id="claro" colspan="2" rowspan="2" class="text-center titulo-tabla ">
           Stats
         </th>
       </tr>
@@ -357,7 +348,7 @@ const MostrarPokemon = (pokemon) =>{
           <div class="speed" style="width:calc(100% * ${pokemon.Speed}/255)"></div>
         </td>
       </tr>
-      <tr style="background: #A27DFA;">
+      <tr id="claroo" class="">
         <th style="width:85px; padding-left:0.5em; padding-right:0.5em">
         <div class="nombre-stat">Total:</div>
         <div class="numero-stat">${pokemon.Hp + pokemon.Atq + pokemon.Def + pokemon.Spa + pokemon.Spd + pokemon.Speed}</div>
@@ -368,64 +359,113 @@ const MostrarPokemon = (pokemon) =>{
   </tbody>
 </table>
 `;
-switch(TipoPrinc)
+switch(pokemon.TipoPrinc)
 {
   case "grass":
+    $("#tabla-estadisticas").addClass("planta")
+    $("#claro").addClass("planta-Claro")
+    $("#claroo").addClass("planta-Claro")
     break;
-
   case "fire":
+    $("#tabla-estadisticas").addClass("fuego")
+    $("#claro").addClass("fuego-Claro")
+    $("#claroo").addClass("fuego-Claro")
     break;
+    
   case "water":
-    break;
-
-  case "grass":
-    break;
-
-  case "flying":
+    $("#tabla-estadisticas").addClass("agua")
+    $("#claro").addClass("agua-Claro")
+    $("#claroo").addClass("agua-Claro")
     break;
 
   case "poison":
+    $("#tabla-estadisticas").addClass("veneno")
+    $("#claro").addClass("veneno-Claro")
+    $("#claroo").addClass("veneno-Claro")
     break;
 
-  case "grass":
+  case "flying":
+    $("#tabla-estadisticas").addClass("volador")
+    $("#claro").addClass("volador-Claro")
+    $("#claroo").addClass("volador-Claro")
     break;
 
-  case "grass":
+  case "dragon":
+    $("#tabla-estadisticas").addClass("dragon")
+    $("#claro").addClass("dragon-Claro")
+    $("#claroo").addClass("dragon-Claro")
     break;
 
-  case "grass":
+  case "normal":
+    $("#tabla-estadisticas").addClass("normal")
+    $("#claro").addClass("normal-Claro")
+    $("#claroo").addClass("normal-Claro")
     break;
 
-  case "fire":
+  case "ghost":
+    $("#tabla-estadisticas").addClass("fantasma")
+    $("#claro").addClass("fantasma-Claro")
+    $("#claroo").addClass("fantasma-Claro")
     break;
 
-  case "grass":
+  case "fighting":
+    $("#tabla-estadisticas").addClass("lucha")
+    $("#claro").addClass("lucha-Claro")
+    $("#claroo").addClass("lucha-Claro")
+    break;
+
+  case "psychic":
+    $("#tabla-estadisticas").addClass("psiquico")
+    $("#claro").addClass("psiquico-Claro")
+    $("#claroo").addClass("psiquico-Claro")
+    break;
+
+  case "dark":
+    $("#tabla-estadisticas").addClass("siniestro")
+    $("#claro").addClass("siniestro-Claro")
+    $("#claroo").addClass("siniestro-Claro")
   break;
 
-  case "grass":
-    break;
-  case "grass":
-    break;
-
-  case "grass":
+  case "electric":
+    $("#tabla-estadisticas").addClass("electrico")
+    $("#claro").addClass("electrico-Claro")
+    $("#claroo").addClass("electrico-Claro")
     break;
 
-  case "grass":
+  case "ground":
+    $("#tabla-estadisticas").addClass("tierra")
+    $("#claro").addClass("tierra-Claro")
+    $("#claroo").addClass("tierra-Claro")
     break;
 
-  case "grass":
+  case "rock":
+    $("#tabla-estadisticas").addClass("roca")
+    $("#claro").addClass("roca-Claro")
+    $("#claroo").addClass("roca-Claro")
     break;
 
-  case "grass":
+  case "steel":
+    $("#tabla-estadisticas").addClass("acero")
+    $("#claro").addClass("acero-Claro")
+    $("#claroo").addClass("acero-Claro")
     break;
 
-  case "grass":
+  case "ice":
+    $("#tabla-estadisticas").addClass("hielo")
+    $("#claro").addClass("hielo-Claro")
+    $("#claroo").addClass("hielo-Claro")
     break;
 
-  case "grass":
+  case "bug":
+    $("#tabla-estadisticas").addClass("bicho")
+    $("#claro").addClass("bicho-Claro")
+    $("#claroo").addClass("bicho-Claro")
     break;
-    
-  case "fire":
+
+  case "fairy":
+    $("#tabla-estadisticas").addClass("hada")
+    $("#claro").addClass("hada-Claro")
+    $("#claroo").addClass("hada-Claro")
     break;
 }
 }
