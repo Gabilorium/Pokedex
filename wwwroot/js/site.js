@@ -481,16 +481,16 @@ function VerMasInfoPokemon(IdP)
           function (pokemon)
           {
             $("#ModalPokemon").modal('show');
-            $("#NombrePokemon").html("<h2>" +pokemon.nombre+ "</h2>");
+            $("#NombrePokemon").html("<h2 class='fuente2'>" +pokemon.nombre+ "</h2>");
             $("#FotoPokemon").attr("src"+"/"+pokemon.imagen);
-            $("#Tipo1").html("Tipo 1: "+pokemon.tipo1);
-            $("#Tipo2").html("Tipo 2: "+pokemon.tipo2);
-            $("#Hp").html("Vida: "+pokemon.hp);
-            $("#Attack").html("Ataque: "+pokemon.attack);
-            $("#Defence").html("Defensa: "+pokemon.defence);
-            $("#SpA").html("Velocidad ataque: "+pokemon.spA);
-            $("#SpD").html("Velocidad defensa: "+pokemon.spD);
-            $("#Speed").html("Velocidad "+pokemon.speed);
+            $("#Tipo1").html("<p class='fuente2'>Tipo 1: "+pokemon.tipo1 + "</p>");
+            $("#Tipo2").html("<p class='fuente2'>Tipo 2: "+pokemon.tipo2+ "</p>");
+            $("#Hp").html("<p class='fuente2'>Vida: "+pokemon.hp+ "</p>");
+            $("#Attack").html("<p class='fuente2'>Ataque: "+pokemon.attack+ "</p>");
+            $("#Defence").html("<p class='fuente2'>Defensa: "+pokemon.defence+ "</p>");
+            $("#SpA").html("<p class='fuente2'>Velocidad ataque: "+pokemon.spA+ "</p>");
+            $("#SpD").html("<p class='fuente2'>Velocidad defensa: "+pokemon.spD+ "</p>");
+            $("#Speed").html("<p class='fuente2'>Velocidad "+pokemon.speed+ "</p>");
             
           } 
       });
