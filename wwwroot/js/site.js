@@ -295,7 +295,7 @@ const MostrarPokemon = (pokemon) =>{
     fetchDataMove(idmov)
   });
   datos.innerHTML +=`
-  <table class="tabla-estadisticas">
+  <table id="tabla-estadisticas" class="">
     <tbody>
       <tr>
         <th colspan="2" rowspan="2" class="text-center titulo-tabla">
