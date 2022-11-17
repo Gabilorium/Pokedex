@@ -99,7 +99,7 @@ function GetDatta(){
 
 
 //Conceguir la datta de 1 solo pokemon
-const fetchDataMove = async (idMov) => {
+const fetchDataMove = async (idMov, learn_method,learn_level) => {
   try{
     //console.log(idMov)
     const mov = await fetch(`https://pokeapi.co/api/v2/move/${idMov}`);
@@ -111,7 +111,7 @@ const fetchDataMove = async (idMov) => {
       Daño: datamov.power
     }
     //console.log(datamov)
-    MostrarMovimiento(movimiento)
+    MostrarMovimiento(movimiento,learn_method, learn_level)
   }catch(error){
     console.log(error)
   }
@@ -148,7 +148,7 @@ const fetchData = async (id) => {
       TipoPrinc: data.types[0].type.name,
       Movimientos: data.moves
     };
-    console.log(data)
+    console.log(pokemon.Movimientos)
     MostrarPokemon(pokemon)
   }catch(error){
     console.log(error)
@@ -191,16 +191,35 @@ function getPokemon(IdPokemon) {
   fetchData(IdPokemon);
 }
 
-const MostrarMovimiento = (movimiento) =>{
+const MostrarMovimiento = (movimiento, learn_method, learn_level) =>{
   var contenido_nivel = document.querySelector('#contenido_nivel')
-  contenido_nivel.innerHTML += `
-  <tr>
-      <th class"text-white" scope="row">${ movimiento.Nombre.charAt(0).toUpperCase() + movimiento.Nombre.slice(1)}</th>
-      <td class"text-white">${ movimiento.Tipo.charAt(0).toUpperCase() + movimiento.Tipo.slice(1)}</td>
-      <td class"text-white">${ movimiento.Clase.charAt(0).toUpperCase() + movimiento.Clase.slice(1)}</td>
-      <td class"text-white">${ movimiento.Daño}</td>
-  </tr>
-  `
+  var contenido_mt = document.querySelector('#contenido_tutor')
+  console.log(learn_method)
+  console.log(learn_level)
+  if(learn_method == "level-up")
+  {
+    contenido_nivel.innerHTML += `
+    <tr>
+        <th class"text-white" scope="row">${ learn_level}</th>
+        <th class"text-white">${ movimiento.Nombre.charAt(0).toUpperCase() + movimiento.Nombre.slice(1)}</th>
+        <td class"text-white">${ movimiento.Tipo.charAt(0).toUpperCase() + movimiento.Tipo.slice(1)}</td>
+        <td class"text-white">${ movimiento.Clase.charAt(0).toUpperCase() + movimiento.Clase.slice(1)}</td>
+        <td class"text-white">${ movimiento.Daño}</td>
+    </tr>
+    `
+  }
+  else
+  {
+    contenido_mt.innerHTML += `
+    <tr>
+
+        <th class"text-white" scope="row">${ movimiento.Nombre.charAt(0).toUpperCase() + movimiento.Nombre.slice(1)}</th>
+        <td class"text-white">${ movimiento.Tipo.charAt(0).toUpperCase() + movimiento.Tipo.slice(1)}</td>
+        <td class"text-white">${ movimiento.Clase.charAt(0).toUpperCase() + movimiento.Clase.slice(1)}</td>
+        <td class"text-white">${ movimiento.Daño}</td>
+    </tr>
+    `
+  }
 }
 
 const MostrarPokemon = (pokemon) =>{
@@ -356,8 +375,12 @@ const MostrarPokemon = (pokemon) =>{
 `
 pokemon.Movimientos.forEach(tipo => {
   idmov = IdMovimiento(tipo.move.url)
-  fetchDataMove(idmov)
-});;
+  learn_method = tipo.version_group_details[0].move_learn_method.name
+  learn_level = tipo.version_group_details[0].level_learned_at
+  console.log(learn_level)
+  fetchDataMove(idmov, learn_method, learn_level)
+});
+;
 switch(pokemon.TipoPrinc)
 {
   case "grass":
@@ -502,7 +525,6 @@ function VerMasInfoPokemon(IdP)
   var btn = document.getElementById("btn1");
 
   var btnClose = document.getElementsByClassName("cerrar");
-
 
   btn.onclick = function(){
     modal.style.display = "block";
