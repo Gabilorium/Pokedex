@@ -212,7 +212,7 @@ const MostrarMovimiento = (movimiento, learn_method, learn_level) =>{
   {
     contenido_mt.innerHTML += `
     <tr>
-
+        <th class"text-white" scope="row">${ learn_method.charAt(0).toUpperCase() + learn_method.slice(1)}</th>
         <th class"text-white" scope="row">${ movimiento.Nombre.charAt(0).toUpperCase() + movimiento.Nombre.slice(1)}</th>
         <td class"text-white">${ movimiento.Tipo.charAt(0).toUpperCase() + movimiento.Tipo.slice(1)}</td>
         <td class"text-white">${ movimiento.Clase.charAt(0).toUpperCase() + movimiento.Clase.slice(1)}</td>
@@ -505,8 +505,8 @@ function VerMasInfoPokemon(IdP)
           {
             $("#ModalPokemon").modal('show');
             $("#NombrePokemon").html("<h2 class='fuente2'>" +pokemon.nombre+ "</h2>");
-            $("#FotoPokemon").attr("src"+"/"+pokemon.imagen);
-            $("#Tipo1").html("<p class='fuente2'>Tipo 1: "+pokemon.tipo1 + "</p>");
+            $("#FotoPokemon").attr("src","/Imagenes/"+pokemon.imagen);
+            $("#Tipo1").html("<p class='fuente2 mt-4'>Tipo 1: "+pokemon.tipo1 + "</p>");
             $("#Tipo2").html("<p class='fuente2'>Tipo 2: "+pokemon.tipo2+ "</p>");
             $("#Hp").html("<p class='fuente2'>Vida: "+pokemon.hp+ "</p>");
             $("#Attack").html("<p class='fuente2'>Ataque: "+pokemon.attack+ "</p>");

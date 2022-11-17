@@ -201,7 +201,10 @@ body {
   width: 5%;
 }
 .imgSize{
-  max-width:25%;
+  max-width:35%;
+}
+.gif{
+  width:70%;
 }
 /*-----------------------------CrearPokemon-----------------------------------
 .Body{
@@ -643,7 +646,8 @@ button:hover{
 }
 
 .fondoGris{
-  background-color:#E7E7E6;
+  background-color:#5f6269;
+  border-radius:10px;
 }
 
 .fondoGrisOscuro{
@@ -652,4 +656,8 @@ button:hover{
 
 .fondoNegro{
   background-color:rgb(0, 0, 0);
+}
+
+.cruz{
+  width:20px;
 }

@@ -111,6 +111,7 @@ public class HomeController : Controller
     public IActionResult ModificarPokemon(int IdMiPokemon)
     {   
         ViewBag.IdMiPokemon = IdMiPokemon;
+        ViewBag.Poke = BD.ObtenerMiPokemonPorId(IdMiPokemon);
         return View();
     }
 
@@ -125,7 +126,8 @@ public class HomeController : Controller
             }
         }
 
-        BD.ModificarPokemon(IdMiPokemon, Nombre, Imagen, Tipo1, Tipo2, Hp, Attack, Defence, SpA, SpD, Speed);
+        MiPokemon Pok = new MiPokemon(Nombre, ("" + Imagen.FileName), Tipo1, Tipo2, Hp, Attack, Defence, SpA, SpD, Speed);
+        BD.ModificarPokemon(Pok, IdMiPokemon);
         return RedirectToAction("Equipo");
     }
 
