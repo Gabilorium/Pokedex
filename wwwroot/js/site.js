@@ -482,8 +482,8 @@ function VerMasInfoPokemon(IdP)
           {
             $("#ModalPokemon").modal('show');
             $("#NombrePokemon").html("<h2 class='fuente2'>" +pokemon.nombre+ "</h2>");
-            $("#FotoPokemon").attr("src"+"/"+pokemon.imagen);
-            $("#Tipo1").html("<p class='fuente2'>Tipo 1: "+pokemon.tipo1 + "</p>");
+            $("#FotoPokemon").attr("src","/Imagenes/"+pokemon.imagen);
+            $("#Tipo1").html("<p class='fuente2 mt-4'>Tipo 1: "+pokemon.tipo1 + "</p>");
             $("#Tipo2").html("<p class='fuente2'>Tipo 2: "+pokemon.tipo2+ "</p>");
             $("#Hp").html("<p class='fuente2'>Vida: "+pokemon.hp+ "</p>");
             $("#Attack").html("<p class='fuente2'>Ataque: "+pokemon.attack+ "</p>");
