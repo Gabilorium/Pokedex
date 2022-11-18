@@ -27,7 +27,7 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
 function GetDatta(){
     var e = document.getElementById("filtroPoke");
     var del = document.getElementById("containerr").childElement;
-    console.log(del)
+    //console.log(del)
     var val = e.value;
     
     switch (val) {
@@ -104,14 +104,16 @@ const fetchDataMove = async (idMov, learn_method,learn_level) => {
     //console.log(idMov)
     const mov = await fetch(`https://pokeapi.co/api/v2/move/${idMov}`);
     const datamov = await mov.json()
+    var dataSet = [];
     const movimiento ={
       Nombre: datamov.name,
       Tipo: datamov.type.name,
       Clase: datamov.damage_class.name,
-      Daño: datamov.power
+      Daño: datamov.power,
     }
     //console.log(datamov)
     MostrarMovimiento(movimiento,learn_method, learn_level)
+
   }catch(error){
     console.log(error)
   }
@@ -119,16 +121,9 @@ const fetchDataMove = async (idMov, learn_method,learn_level) => {
 
 const fetchData = async (id) => {
   try{
-    console.log(id)
+    console.log("Id del pokemon: " + id)
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await res.json()
-    data.types.forEach(type => {
-      tipo = type.type.name;
-      console.log(tipo)
-      var i = 0;
-      i = i+1;
-      console.log(data.types.length)
-    })
     const pokemon = {
       img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
       imgJuego: data.sprites.front_default,
@@ -148,7 +143,7 @@ const fetchData = async (id) => {
       TipoPrinc: data.types[0].type.name,
       Movimientos: data.moves
     };
-    console.log(pokemon.Movimientos)
+    console.log(pokemon)
     MostrarPokemon(pokemon)
   }catch(error){
     console.log(error)
@@ -187,15 +182,19 @@ function IdPokemon(url) {
 function IdMovimiento(url) {
   return url.replace('https://pokeapi.co/api/v2/move/', '').replace('/','')
 }
-function getPokemon(IdPokemon) {
-  fetchData(IdPokemon);
+async function getPokemon(IdPokemon) {
+  await fetchData(IdPokemon);
 }
 
 const MostrarMovimiento = (movimiento, learn_method, learn_level) =>{
   var contenido_nivel = document.querySelector('#contenido_nivel')
   var contenido_mt = document.querySelector('#contenido_tutor')
-  console.log(learn_method)
-  console.log(learn_level)
+
+  //console.log(learn_level)
+  if(movimiento.Daño == null)
+  {
+    movimiento.Daño = "-"
+  }
   if(learn_method == "level-up")
   {
     contenido_nivel.innerHTML += `
@@ -223,7 +222,7 @@ const MostrarMovimiento = (movimiento, learn_method, learn_level) =>{
 }
 
 const MostrarPokemon = (pokemon) =>{
-  console.log(pokemon)
+  //console.log(pokemon)
   const datos = document.querySelector('#datos')
   datos.innerHTML = `
   ${datos.innerHTML}
@@ -296,6 +295,13 @@ const MostrarPokemon = (pokemon) =>{
       datos.innerHTML += `
       <h4 class="text-white">${tipo.type.name.charAt(0).toUpperCase() + tipo.type.name.slice(1)}</h4>
       `
+  });
+  pokemon.Movimientos.forEach(tipo => {
+    idmov = IdMovimiento(tipo.move.url)
+    learn_method = tipo.version_group_details[0].move_learn_method.name
+    learn_level = tipo.version_group_details[0].level_learned_at
+    //console.log(learn_level)
+    fetchDataMove(idmov, learn_method, learn_level)
   });
   datos.innerHTML +=`
 
@@ -373,13 +379,6 @@ const MostrarPokemon = (pokemon) =>{
   </tbody>
 </table>
 `
-pokemon.Movimientos.forEach(tipo => {
-  idmov = IdMovimiento(tipo.move.url)
-  learn_method = tipo.version_group_details[0].move_learn_method.name
-  learn_level = tipo.version_group_details[0].level_learned_at
-  console.log(learn_level)
-  fetchDataMove(idmov, learn_method, learn_level)
-});
 ;
 switch(pokemon.TipoPrinc)
 {
@@ -491,6 +490,7 @@ switch(pokemon.TipoPrinc)
     break;
 }
 }
+
 
 function VerMasInfoPokemon(IdP)
   {

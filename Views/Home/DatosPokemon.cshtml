@@ -12,7 +12,7 @@
 
     </div>
     <div class="Scroll-Table">
-        <table class="table">
+        <table class="table" id="sortTable">
             <thead>
                 <tr>
                     <th class="th negro text-light" scope="col">Nivel</th>
@@ -26,8 +26,8 @@
             </tbody>
         </table>
     </div>
-    <div class="Scroll-Table">
-        <table class="table">
+    <div class="Scroll-Table" >
+        <table class="table" id="sorttTable">
             <thead>
                 <tr>
                     <th class="th negro text-light" scope="col">Metodo de Aprendizaje</th>
@@ -42,6 +42,7 @@
         </table>
     </div>
 <script>
+
     getPokemon(@ViewBag.IdPokemon);
 
 
@@ -59,4 +60,5 @@ function tabla(datos) {
         `
     }
 }
+
 </script>
